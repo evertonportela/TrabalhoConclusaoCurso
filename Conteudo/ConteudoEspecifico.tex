@@ -1,9 +1,9 @@
 \chapter{Revisão Sistemática}\label{cap_trabalho_academico}
-O termo Revisão Sistemática (RS) é utilizado para se referir a uma metodologia específica de pesquisa, desenvolvida a fim de identificar, avaliar e interpretar as evidencias disponíveis relevantes para um determinado tema, ou questão de pesquisa, ou área de tópico, ou fenômeno de interesse \cite{biolchini2005, kitchenham2004}. A perspectiva conceitual mais ampla propõe uma abordagem definida em três fases principais, sendo estas, o planejamento da revisão, a condução da revisão e a apresentação dos resultados da revisão \cite{biolchini2005}. 
+O termo Revisão Sistemática (RS) é utilizado para se referir a uma metodologia específica de pesquisa, desenvolvida a fim de identificar, avaliar e interpretar as evidências disponíveis relevantes para um determinado tema, ou questão de pesquisa, ou área de tópico, ou fenômeno de interesse \cite{biolchini2005, kitchenham2004}. A perspectiva conceitual mais ampla propõe uma abordagem definida em três fases principais, sendo estas, o planejamento da revisão, a condução da revisão e a apresentação dos resultados da revisão \cite{biolchini2005}. 
 
 O planejamento da revisão define a identificação do que é necessário para a revisão e o desenvolvimento do protocolo que a direciona. A condução da revisão identifica a pesquisa, a seleção dos estudos primários, a avaliação da qualidade dos estudos, a extração e a síntese dos dados. E por fim a apresentação da revisão é a documentação de todo o trabalho executado \cite{kitchenham2004}.
 
-Neste capitulo estão descritos os métodos e os resultados extraídos da revisão sistemática sobre sistemas de apoio a decisão para nutrição hospitalar, suas principais funcionalidades, características e metodologias utilizadas.
+Neste capítulo estão descritos os métodos e os resultados extraídos da revisão sistemática sobre sistemas de apoio a decisão para nutrição hospitalar, suas principais de gerenciamento e análise de dados e \textit{KPI's} utilizadas.
 
 \section{Planejamento da Revisão}
 
@@ -33,9 +33,9 @@ Com os requisitos de formularização da pesquisa definidos foram criadas as seg
 
 µ1: Como as pesquisas tratam o gerenciamento e a análise dos dados clínicos sobre o acompanhamento nutricional dos pacientes nos hospitais?
 
-µ2: Como os hospitais extraem Indicadores-chave de desempenho (KPI’s) para análise de dados de acompanhamento nutricional?
+µ2: Como os hospitais extraem indicadores-chave de desempenho (KPI’s) para análise de dados de acompanhamento nutricional?
 
-µ3: De que forma esses dados são utilizados e impactam nas tomadas de decisão dos setores de gestão e assistenciais dos estabelecimentos hospitalares?
+µ3: De que forma esses dados são utilizados e impactam na tomada de decisão dos setores assistenciais e de gestão dos estabelecimentos hospitalares?
 
 
 \section{Condução da Revisão}
@@ -204,23 +204,105 @@ Os artigos analisados pertencem a uma faixa de publicação entre os anos de 201
 A maior quantidade de artigos analisados foram publicados no ano de 2019, com um total de 4 (quatro) artigos. Os anos de 2017 e 2018 apresentaram a segunda maior quantidade de publicações, sendo 3 (três) artigos em cada ano. Seguidos dos anos de 2014, 2015 e 2020 com 2 (dois) artigos em cada ano. E 1 (um) artigo no ano de 2016.
 
 \section{Análise dos resultados}
-Na fase de análise, uma vez selecionados os estudos, começa a extração de informações relevantes. Esta seção apresenta as respostas obtidas para as questões de pesquisa. O \autoref{quadro_funcionalidadesArtigos} exibe as principais funcionalidades encontradas nos estudos e também ferramentas utilizadas.
+Na fase de análise, uma vez selecionados os estudos, foi realizada a extração de informações relevantes. Esta seção apresenta as respostas obtidas para as questões de pesquisa. O \autoref{quadro_funcionalidadesArtigos} mostra as principais abordagens encontradas e as formas utilizadas para gerenciamento dos dados.
 
 \textit{µ1: Como as pesquisas tratam o gerenciamento e a análise dos dados clínicos sobre o acompanhamento nutricional dos pacientes nos hospitais?}
 
 \begin{quadro}[htb]
-\caption{\label{quadro_funcionalidadesArtigos}Identificação das funcionalidades de gerenciamento.}
+\caption{\label{quadro_funcionalidadesArtigos}Identificação das abordagens de gerenciamento e análise.}
 \label{}
-\begin{tabular}{|p{12cm}|p{3cm}|}
+\begin{tabular}{|p{11cm}|p{4cm}|}
 	\hline
-	\textbf{Funcionalidade}   &   \textbf{Fontes}\\ \hline
-	Apresenta dados probabilísticos gerados com redes Bayesianas   &   A3\\ \hline
-	Utiliza algoritmo genético e algoritmo de cozimento simulado   &   A4\\ \hline
-	Utiliza avaliação nutricional em dispositivo móvel & \\ \hline
-	Utiliza avaliação nutricional em aplicação web & \\ \hline
-	Possui repositório de dados em\textit{ Data Warehouse} & \\ \hline
-	Utiliza apresenta avaliação nutricional em \textit{plugin}  & \\ \hline
-	Apresenta \textit{Dashboard} com dados das avaliações nutricionais & \\ \hline
+	\textbf{Abordagem utilizada}   &   \textbf{Artigos}\\ \hline
+	Apresenta relatório de dados probabilísticos gerados com redes Bayesianas.   &   A3, A4.\\ \hline
+	Utiliza algoritmo genético e algoritmo de cozimento simulado para gerar recomendações nos relatórios.  &   A4.\\ \hline
+	Utiliza dispositivo móvel apresentar dados de avaliação nutricional. & A1, A5, A6, A11.\\ \hline
+	Apresenta \textit{Dashboard} com dados das avaliações nutricionais. & A1, A5, A10, A15, A17.\\ \hline
+\end{tabular}
+\end{quadro}
+
+\begin{quadro}[htb]
+\begin{tabular}{|p{11cm}|p{4cm}|}
+    \hline
+    Utiliza aplicação web para apresentar dados de avaliação nutricional. & A1, A5, A6, A10, A11.\\ \hline
+	Possui estrutura de armazenamento de dados em\textit{ Data Warehouse}. & A7, A11.\\ \hline
+	Utiliza \textit{plugin} para apresentar dados de avaliação nutricional.  & A2.\\ \hline
 \end{tabular}
 \fonte{Autor.}
 \end{quadro}
+
+Buscando responder a segunda questão de pesquisa, o \autoref{quadro_indicadoresArtigos} apresenta os formatos de aquisição dos \textit{key performance indicators} utilizados pelos estudos.
+
+\textit{µ2: Como os hospitais extraem indicadores-chave de desempenho (ICP) para análise de dados de acompanhamento nutricional?}
+
+\begin{quadro}[htb]
+\caption{\label{quadro_indicadoresArtigos}Formatos de aquisição de Indicadores-chave de desempenho.}
+\label{}
+\begin{tabular}{|p{11cm}|p{4cm}|}
+	\hline
+	\textbf{Abordagem utilizada}   &   \textbf{Artigos}\\ \hline
+	Utiliza formulário integrado ao módulo de apoio a decisão. &  A2\\ \hline
+	Utiliza dispositivo móvel para realizar preenchimento dos dados de avaliação nutricional. & A6, A11\\ \hline
+	Utiliza aplicação web para realizar preenchimento de formulário dos dados de avaliação nutricional. & A1, A5 A10, A11\\ \hline
+	Utiliza planilha eletrônica para carga de dados & A4, A7.\\ \hline
+	Utiliza consulta a base de dados do sistema de administração hospitalar. & A10, A11, A12 A16, A17.\\ \hline
+\end{tabular}
+\fonte{Autor.}
+\end{quadro}
+
+O \autoref{quadro_ImpactosPositivos} apresenta a síntese sobre os impactos que cada artigo causou em seus respectivos ambientes de estudo. 
+\newline
+
+\textit{µ3: De que forma esses dados são utilizados e impactam na tomada de decisão dos setores assistenciais e de gestão dos estabelecimentos hospitalares?}
+
+\begin{quadro}[htb]
+\caption{\label{quadro_ImpactosPositivos}Síntese sobre os impactos positivos e negativos extraídos nos estudos.}
+\label{}
+\begin{tabular}{|p{1,5cm}|p{13,5cm}|}
+	\hline
+	\textbf{Artigo}   &   \textbf{Impactos}\\ \hline
+	A1  &  Segundo \citeonline{paulsen2018_1} os dados fornecidos podem contribuir para prevenir o desenvolvimento de desnutrição relacionada à doença entre pacientes em risco.\\ \hline
+	A2  &  Para \citeonline{alrifai2017} os principais pontos positivos foram o aumento significativo na dosagem apropriada, a melhora de uremia e o ganho de peso durante fase de nutrição enteral.\\ \hline
+	A3  &  \citeonline{cruz2017} apresentam grande vantagem na sugestão baseada de risco de desenvolvimento de doença baseado no relatório.\\ \hline
+	A4  & \citeonline{ileri2019} analisam os pedidos do menu de dieta e sugere vários menus para fornecer eficácia de custo e possíveis taxas de erro mais baixas ao mesmo tempo.\\ \hline
+\end{tabular}
+\end{quadro}
+\newpage
+\begin{quadro}[htb]
+\begin{tabular}{|p{1,5cm}|p{13,5cm}|}
+    \hline
+	A5  &  \citeonline{bruin2018} apresentam um monitoramento que pode servir como o elo que faltava na identificação precoce de mudança no estado nutricional de um paciente.\\ \hline
+    A6  & \citeonline{paulsen2018_2} apresentam um aplicativo móvel para acompanhamento nutricional de pacientes hospitalizados, que foi percebido pelo usuários como mais preciso, confiável, divertido e motivacional do que a prática tradicional. Contudo,
+    aspectos culturais, de idioma, idade, higiene e falta de integração com sistema de prontuários foram percebidos como barreiras potenciais. \\ \hline
+    A7 & \citeonline{narra2015} consideram a vantagem de integrar diferentes fontes de dados para possibilitar análise dimensional. Além disso, a natureza não volátil dos \textit{data warehouses} permitem o estudo de vários fatores e problemas de saúde que só podem ser identificados com dados de um longo período de tempo além da possibilidade de aplicar técnicas de mineração de dados.\\ \hline
+    A8 & \citeonline{metha2018} apresentam como o sistema de apoio a decisão ajuda na detecção precoce de doenças, dicção da trajetória da doença e identificação de desvio de estado saudável. O tratamento direcionado pode ser direcionado ajudando as organizações de saúde em custo-benefício e redução do desperdício de recursos.\\ \hline
+    A9 & Em \citeonline{visscher2017}, um \textit{data warehouse} padronizado e baseado em provedor de dados de custos de saúde pode ser mantido facilmente. Sendo útil para fornecer estimativas de custo total razoáveis e compreensíveis, entendo melhor o faturamento e possibilitando estratégias que melhorem o custo-beneficio por paciente na rede hospitalar.\\ \hline
+    A10 & \citeonline{boonapai2016} implementam com sucesso um modelo de consciência nutricional e orientação para o usuário, especialmente com hipertensão, diabetes e obesidade, porque podem controlar e monitorar sua condição e seus planos de dieta.\\ \hline
+    A11 & \citeonline{paulsen2020} obtiveram um efeito significativo na proporção de pacientes com tratamento nutricional documentado no prontuário eletrônico do paciente.\\ \\ \hline
+    A12 & \citeonline{ettori2019} mostraram melhorar relativamente a taxa de dias no cumprimento das metas calóricas e proteicas em mais de 50\%.\\ \hline
+    A13 & O sistema de alerta apresentado por \citeonline{brieux2014} teve alta sensibilidade e especificidade e esse fato ajudou os médicos a diagnosticarem a desnutrição nos pacientes.\\ \hline
+    A14 & Médicos relataram práticas mais consistentes e sistemáticas, segundo \citeonline{moullet2020}, como por exemplo, a determinação de metas de energia na admissão na Unidade de Terapia Intensiva Pediátrica e maior atenção à nutrição.\\ \hline
+    A15 &  \citeonline{schuttler2017} propuseram três camadas de visualização, o que permitiu ao usuário obter as informações necessárias e, simultaneamente, evitar a sobrecarga de informações.\\ \hline
+    A16 & \citeonline{steiber2015} apresentaram a capacidade de rastrear mudanças nas medidas de avaliação ao longo do tempo. \\ \hline
+\end{tabular}
+\end{quadro}
+\newpage
+\begin{quadro}[htb]
+\begin{tabular}{|p{1,5cm}|p{13,5cm}|}
+    A17 & O trabalho realizado por \citeonline{wai2019} resultou em um aumento significativo na prescrição de tiamina parenteral em alta dose e uma tendência à significância estatística para diminuir o tempo de internação. \\ \hline
+\end{tabular}
+\fonte{Autor.}
+\end{quadro}
+Também buscando responder a terceira questão de pesquisa, foi identificada a densidade de KPI's utilizadas nos artigos, conforme a \autoref{fig_graficoDensidadeKPI}.
+
+\begin{figure}[htb]
+	\caption{\label{fig_graficoDensidadeKPI}Quantidade de artigos por ano de publicação.}
+	\begin{center}
+	    \includegraphics[scale=0.8]{Imagens/grafico - densidade de kpi.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
+
+
+\section{Considerações do capítulo}
+Este capítulo descreveu a execução de cada etapa do processo da revisão sistemática. Esta revisão teve como objetivo conhecer as pesquisas que trataram do apoio a tomada de decisão na área da nutrição hospitalar. Foi apresentado o processo de planejamento e realização da execução da revisão, por fim, realizada a extração dos dados, obtendo principais abordagens de gerenciamento e analise dos dados, formas de extração e principais \textit{KPI's} utilizados em projetos de sistemas de apoio a decisão. No próximo capítulo será descrito o desenvolvimento do Sistema de Apoio a Decisão da Unidade de Nutrição do HU.
