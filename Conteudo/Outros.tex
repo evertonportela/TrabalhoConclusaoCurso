@@ -181,11 +181,11 @@ Na \autoref{fig_etldimensaoenfermaria} os dados relacionados as enfermarias do H
 	\end{center}
 	\legend{Fonte: Autor.}
 \end{figure}
-
+                    \clearpage
 \begin{figure}[htb]
 	\caption{\label{fig_etldimensaosuplementacao}Processo ETL para a Dimensão Suplementação.}
 	\begin{center}
-	    \includegraphics[scale=0.75]{Imagens/figura - etl dw suplementacao.png}
+	    \includegraphics[scale=0.8]{Imagens/figura - etl dw suplementacao.png}
 	\end{center}
 	\legend{Fonte: Autor.}
 \end{figure}
@@ -193,7 +193,7 @@ Na \autoref{fig_etldimensaoenfermaria} os dados relacionados as enfermarias do H
 \begin{figure}[htb]
 	\caption{\label{fig_etldimensaoinsumo}Processo ETL para a Dimensão Insumos.}
 	\begin{center}
-	    \includegraphics[scale=0.85]{Imagens/figura - etl dw insumos.png}
+	    \includegraphics[scale=0.82]{Imagens/figura - etl dw insumos.png}
 	\end{center}
 	\legend{Fonte: Autor.}
 \end{figure}
@@ -201,51 +201,118 @@ Na \autoref{fig_etldimensaoenfermaria} os dados relacionados as enfermarias do H
 \begin{figure}[htb]
 	\caption{\label{fig_etldimensaoestado}Processo ETL para a Dimensão Estado Nutricional.}
 	\begin{center}
-	    \includegraphics[scale=0.85]{Imagens/figura - etl dw estadonutricional.png}
+	    \includegraphics[scale=0.8]{Imagens/figura - etl dw estadonutricional.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
+                    \clearpage
+\begin{figure}[htb]
+	\caption{\label{fig_etldimensaoedema}Processo ETL para a Dimensão Edema.}
+	\begin{center}
+	    \includegraphics[scale=0.7]{Imagens/figura - etl dw edema.png}
 	\end{center}
 	\legend{Fonte: Autor.}
 \end{figure}
 
-tentaiva apos um texot.
-\newpage
-\subsection{Mapeamento e Consultas OLAP}
-Schema Workbench Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum
+\begin{figure}[htb]
+	\caption{\label{fig_etldimensaodesfecho}Processo ETL para a Dimensão Desfecho.}
+	\begin{center}
+	    \includegraphics[scale=0.7]{Imagens/figura - etl dw dietaenteral.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
 
- Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum
+\begin{figure}[htb]
+	\caption{\label{fig_etldimensaocomplicacoes}Processo ETL para a Dimensão Complicações.}
+	\begin{center}
+	    \includegraphics[scale=0.72]{Imagens/figura - etl dw complicacoes.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
+                \clearpage
+\begin{figure}[htb]
+	\caption{\label{fig_etldimensaoclassificacao}Processo ETL para a Dimensão Classificação Nutricional.}
+	\begin{center}
+	    \includegraphics[scale=0.8]{Imagens/figura - etl dw classificacao.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
+A \autoref{fig_etltabelafato} mostra o processo de transformação e carga para a Tabela de Fato do Data Warehouse. 
+\begin{figure}[htb]
+	\caption{\label{fig_etltabelafato}Processo ETL para a Tabela de Fato do Data Warehouse.}
+	\begin{center}
+	    \includegraphics[scale=0.7]{Imagens/figura - etl dw fato.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
+
+Na \autoref{fig_etlcargafatodatamart} está representado o processo de transformação e carga para a tabela fato do Datamart. Já na \autoref{fig_etlcargadimensoesdatamart} está representado o processo para as dimensões do Datamart.
+
+\begin{figure}[htb]
+	\caption{\label{fig_etlcargafatodatamart}Processo ETL para a Tabela de Fato do \textit{Datamart}.}
+	\begin{center}
+	    \includegraphics[scale=0.57]{Imagens/figura - etl dm fato.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
+
+\begin{figure}[htb]
+	\caption{\label{fig_etlcargadimensoesdatamart}Processo ETL para as Dimensões do \textit{Datamart}.}
+	\begin{center}
+	    \includegraphics[scale=0.56]{Imagens/figura - etl dm dimensoes.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
+            \clearpage
+
+\subsection{Mapeamento e Consultas OLAP}
+Com o processo de carga completo, o próximo passo da sequência é a configuração e criação do cubo lógico de dados com as propriedades das medidas e dimensões, como funções de agregação, formatação, funções matemáticas e nome para exibição. A ferramenta utilizada foi o Pentaho Schema Workbench que também é fornecida no pacote Pentaho Community e usa o mecanismo Modrian para se comunicar com os esquemas ROLAP e processar as solicitações de consultas multidimensionais ou MDX como também são conhecidas na sigla em inglês para \textit{Multidimensional Express}. A \autoref{fig_pentahoshemaworkbench} apresenta o cubo lógico "DMNutricao", onde estão definidas as medidas: ClassificacaoDeRisco, EstadoNutricional, Desfecho, Edema, Insumo, DietaEnteral, UsoDeSuplemento, TriagemRealizada, Complicacoes e DiasInternamento que serão utilizados para geração dos \textit{dashboards}, utilizando todas as Dimensões de acordo com o diagrama ER da \autoref{fig_modelagemdatamart}.
+
+\begin{figure}[htb]
+	\caption{\label{fig_pentahoshemaworkbench}Modelagem do cubo lógico de dados.}
+	\begin{center}
+	    \includegraphics[scale=0.65]{Imagens/figura - schema workbench.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
+
+As consultas MDX que são a base dos relatórios e gráficos podem ser montadas e testadas no ambiente de query do próprio Schema Workcbench, a \autoref{fig_shemaworkbenchconsulta} mostra a consulta MDX realizada para o relatório de quantidade de triagens realizadas por mês para cada enfermaria do hospital. Na área em amarelo é escrita a query de consulta e na área em vermelho é mostrada a resposta da consulta multidimensional.
+\begin{figure}[htb]
+	\caption{\label{fig_shemaworkbenchconsulta}Exemplo de consulta MDX no Schema Workbench.}
+	\begin{center}
+	    \includegraphics[scale=0.7]{Imagens/figura - workbenchconsulta.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
 
 \subsection{Ambiente de Relatórios}
-Saiku Analytics Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum
+Com o ambiente pronto e as consultas necessárias montadas, é possível seguir à etapa de geração dos relatórios e \textit{dashboards} no Pentaho Business Analytics Platform. A plataforma de \textit{Business Analytics} vem com o editor padrão de relatórios JPivot View, mas também é permitida a instalação de outras bibliotecas, que podem ser integradas por meio do \textit{Marketplace} da Pentaho ou instaladas manualmente quando de fontes externas. O JPivot em sua versão disponibilizada de forma padrão no Pentaho Server foi descontinuada e por este motivo para este trabalho foi instalada a biblioteca Saiku Analytics, um cliente web disponível em forma de \textit{plugin} no \textit{Marketplace}, como mostra a \autoref{fig_pluginsaiku}. 
+\begin{figure}[htb]
+	\caption{\label{fig_pluginsaiku}Plugin Saiku Analytics no Pentaho Marketplace}
+	\begin{center}
+	    \includegraphics[scale=0.6]{Imagens/figura - pluginsaiku.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
 
- Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum
+O ambiente para montagem dos relatórios pode ser conferido na \autoref{fig_saikuanalytics}.
+Ele também utiliza o motor Mondrian para as consultas aos cubos ROLAP. Também permite que o usuário final elabore as próprias consultas com vários gráficos disponíveis e função \textit{drag in drop} tornando a experiência mais intuitiva, dispensando conhecimento prévio em SQL ou MDX. 
+
+\newpage
+\begin{figure}[htb]
+	\caption{\label{fig_saikuanalytics}Ambiente de Relatórios do Saiku Analytics}
+	\begin{center}
+	    \includegraphics[scale=0.45]{Imagens/figura - saikudashboard.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
 
 \section{Resultados}
-\subsection{Dashboards Obtidos}
-Resultados Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum
-
- Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum Lorem impsum
+\subsection{\textit{Dashboards} Obtidos}
+Resultados
 
 % ---
 % primeiro capitulo de Resultados
 % ---
 \chapter{Considerações Finais}
 % ---
-
-% ---
-\section{Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-posuere cubilia Curae}
-% ---
-
-\lipsum[21-22]
-
-% ---
-% segundo capitulo de Resultados
-% ---
-\chapter{Nam sed tellus sit amet lectus urna ullamcorper tristique interdum
-elementum}
-% ---
-
-% ---
-\section{Pellentesque sit amet pede ac sem eleifend consectetuer}
-% ---
-
-\lipsum[24]
