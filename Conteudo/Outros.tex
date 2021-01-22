@@ -42,27 +42,27 @@ Para o indicador de Triagem Nutricional Realizada, as seguintes informações fo
 
 Para o indicador de Classificação de Risco foram solicitadas as seguintes informações:
 \begin{itemize}
-    \item Percentual de Classificação de Risco por Triagem Nutricional ao Ano;
-    \item Percentual de Classificação de Risco por Triagem Nutricional detalhado por mês;
-    \item Percentual de Classificação de Risco por Triagem Nutricional por Enfermaria ao Ano;
-    \item Tendência de Classificação de Risco por Triagem Nutricional por Enfermaria detalhado por mês.
+    \item Percentual de Pacientes segundo Classificação de Risco ao Ano;
+    \item Percentual de Pacientes segundo Classificação de Risco detalhado por mês;
+    \item Percentual de Pacientes segundo Classificação de Risco por Enfermaria ao Ano;
+    \item Tendência de Pacientes segundo Classificação de Risco por Enfermaria detalhado por mês.
 \end{itemize}
 
 Para o indicador de Estado Nutricional foram solicitadas as seguintes informações:
 \begin{itemize}
-    \item Percentual do Estado Nutricional por Triagem Nutricional ao Ano;
-    \item Percentual do Estado Nutricional por Triagem Nutricional detalhado por mês;
-    \item Percentual do Estado Nutricional por Triagem Nutricional por Enfermaria ao Ano;
-    \item Tendência do Estado Nutricional por Triagem Nutricional por Enfermaria detalhado por mês.
+    \item Percentual de Pacientes segundo Estado Nutricional ao Ano;
+    \item Percentual de Pacientes segundo Estado Nutricional detalhado por mês;
+    \item Percentual de Pacientes segundo Estado Nutricional por Enfermaria ao Ano;
+    \item Tendência de Pacientes segundo Estado Nutricional por Enfermaria detalhado por mês.
 \end{itemize}
 
 Para o indicador de Uso de Suplementação foram solicitadas as seguintes informações:
 \begin{itemize}
     \item Quantidade de Pacientes em Uso de Suplemento;
     \item Quantidade de Pacientes em Uso de Suplemento por Enfermaria;
-    \item Percentual de Uso de Suplementação por Triagem Nutricional ao Ano;
-    \item Percentual de Uso de Suplementação por Triagem Nutricional por Enfermaria ao Ano;
-    \item Tendência de Uso de Suplementação por Triagem Nutricional por Enfermaria detalhado por mês;
+    \item Percentual de Pacientes segundo Uso de Suplementação ao Ano;
+    \item Percentual de Pacientes segundo Uso de Suplementação por Enfermaria ao Ano;
+    \item Tendência de Pacientes segundo Uso de Suplementação por Enfermaria detalhado por mês;
     \item Comparativo de pacientes que utilizam Suplementação com média de dias internado;
     \item Comparativo de pacientes que utilizam Suplementação com média de dias internado por enfermaria.
 \end{itemize}
@@ -75,20 +75,12 @@ Para o indicador de Insumo foi solicitada a seguinte informação:
 Para o indicador de Uso de Dieta Enteral foram solicitadas as seguintes informações:
 \begin{itemize}
     \item Quantidade de Pacientes em Uso de Dieta Enteral;
-    \item Quantidade de Pacientes em Uso de Dieta Enteral  por Enfermaria;
-    \item Percentual de Uso de Dieta Enteral por Triagem Nutricional ao Ano;
-    \item Percentual de Uso de Dieta Enteral por Triagem Nutricional por Enfermaria ao Ano;
-    \item Tendência de Uso de Dieta Enteral por Triagem Nutricional por Enfermaria detalhado por mês;
+    \item Quantidade de Pacientes em Uso de Dieta Enteral por Enfermaria;
+    \item Percentual de Pacientes segundo Uso de Dieta Enteral ao Ano;
+    \item Percentual de Pacientes segundo Uso de Dieta Enteral por Enfermaria ao Ano;
+    \item Tendência de Pacientes segundo Uso de Dieta Enteral por Enfermaria detalhado por mês;
     \item Comparativo de pacientes que utilizam Dieta Enteral com média de dias internado;
     \item Comparativo de pacientes que utilizam Dieta Enteral com média de dias internado por enfermaria.
-\end{itemize}
-
-Para o indicador de Complicações, que podem ocorrer por uso de suplementação e uso de dieta enteral foram solicitadas as seguintes informações:
-\begin{itemize}
-    \item Percentual de Complicações em Uso de Suplementação ao Ano;
-    \item Percentual de Complicações em Uso de Suplementação por Enfermaria ao Ano;
-    \item Percentual de Complicações em Uso de Dieta Enteral ao Ano;
-    \item Percentual de Complicações em Uso de Dieta Enteral por Enfermaria ao Ano;
 \end{itemize}
 
 Para o indicador de Complicações, que podem ocorrer por Uso de Suplementação e Uso de Dieta Enteral foram solicitadas as seguintes informações:
@@ -288,7 +280,7 @@ As consultas MDX que são a base dos relatórios e gráficos podem ser montadas 
 \subsection{Ambiente de Relatórios}
 Com o ambiente pronto e as consultas necessárias montadas, é possível seguir à etapa de geração dos relatórios e \textit{dashboards} no Pentaho Business Analytics Platform. A plataforma de \textit{Business Analytics} vem com o editor padrão de relatórios JPivot View, mas também é permitida a instalação de outras bibliotecas, que podem ser integradas por meio do \textit{Marketplace} da Pentaho ou instaladas manualmente quando de fontes externas. O JPivot em sua versão disponibilizada de forma padrão no Pentaho Server foi descontinuada e por este motivo para este trabalho foi instalada a biblioteca Saiku Analytics, um cliente web disponível em forma de \textit{plugin} no \textit{Marketplace}, como mostra a \autoref{fig_pluginsaiku}. 
 \begin{figure}[htb]
-	\caption{\label{fig_pluginsaiku}Plugin Saiku Analytics no Pentaho Marketplace}
+	\caption{\label{fig_pluginsaiku}Plugin Saiku Analytics no Pentaho Marketplace.}
 	\begin{center}
 	    \includegraphics[scale=0.6]{Imagens/figura - pluginsaiku.png}
 	\end{center}
@@ -300,7 +292,7 @@ Ele também utiliza o motor Mondrian para as consultas aos cubos ROLAP. Também 
 
 \newpage
 \begin{figure}[htb]
-	\caption{\label{fig_saikuanalytics}Ambiente de Relatórios do Saiku Analytics}
+	\caption{\label{fig_saikuanalytics}Ambiente de Relatórios do Saiku Analytics.}
 	\begin{center}
 	    \includegraphics[scale=0.45]{Imagens/figura - saikudashboard.png}
 	\end{center}
@@ -308,11 +300,215 @@ Ele também utiliza o motor Mondrian para as consultas aos cubos ROLAP. Também 
 \end{figure}
 
 \section{Resultados}
-\subsection{\textit{Dashboards} Obtidos}
-Resultados
 
-% ---
-% primeiro capitulo de Resultados
+A plataforma de integração e análise de dados da Pentaho permite que as organizações acessem, preparem e analisem todos os dados de qualquer fonte, em qualquer ambiente \cite{pentahosite}. E o Saiku Analytics permite realizar análises complexas e poderosas usando uma interface fácil, arrastando e soltando as medidas e dimensões por meio do navegador criando relatórios detalhados e ótimas visualizações gráficas \cite{meteoribisite} A seguir estão  os resultados obtidos conforme as demandas solicitadas pela Unidade de Nutrição Clínica do HU-UFS.
+
+\subsection{Relatórios e Dashboards Obtidos}
+Com o ambiente de relatórios pronto e as consultas carregadas utilizando o Saiku Analytics foi possível gerar os relatórios com as informações solicitadas pela Unidade de Nutrição Clínica do Hospital Universitário. A \autoref{dashboard_TotalTriagensRealizadasHospitalAnoTabela}, mostra a quantidade de triagens nutricionais realizadas ao ano.
+
+\begin{figure}[htb]
+	\caption{\label{dashboard_TotalTriagensRealizadasHospitalAnoTabela}Quantidade de Triagens Nutricionais Realizadas ao Ano.}
+	\begin{center}
+	    \includegraphics[scale=1]{Imagens/1.1.TotalTriagensRealizadasHospitalAnoTabela.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
+\newpage
+A \autoref{dashboard_TotalTriagensRealizadasHospitalMesTabela}, mostra o relatório com a quantidade de triagens nutricionais realizadas por mês. 
+
+\begin{figure}[htb]
+	\caption{\label{dashboard_TotalTriagensRealizadasHospitalMesTabela}Quantidade de Triagens Nutricionais Realizadas ao Mês.}
+	\begin{center}
+	    \includegraphics[scale=1]{Imagens/1.2.TotalTriagensRealizadasHospitalMesTabela.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
+
+\clearpage
+A \autoref{dashboard_TotalTriagensRealizadasEnfermariaAnoBarras}, mostra o gráfico de barras sobre a quantidade de triagens nutricionais realizadas por enfermaria ao ano.
+
+\begin{figure}[htb]
+	\caption{\label{dashboard_TotalTriagensRealizadasEnfermariaAnoBarras}Quantidade de Triagens Nutricionais Realizadas Por Enfermaria ao Ano.}
+	\begin{center}
+	    \includegraphics[scale=0.4]{Imagens/1.3.TotalTriagensRealizadasEnfermariaAnoBarras.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
+
+A \autoref{dashboard_TotalTriagensRealizadasEnfermariaMesLinhas}, contém um gráfico de linhas demonstrando a tendência de triagens nutricionais realizadas por enfermaria.
+
+\begin{figure}[htb]
+	\caption{\label{dashboard_TotalTriagensRealizadasEnfermariaMesLinhas}Tendência de Triagens Nutricionais Realizadas Por Enfermaria.}
+	\begin{center}
+	    \includegraphics[scale=0.475]{Imagens/1.4.TotalTriagensRealizadasEnfermariaMesLinhas.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
+\clearpage
+A \autoref{dashboard_PercentualClassificacaoRiscoHospitalAnoPizza}, mostra gráfico de pizza do percentual de pacientes segundo classificação de risco ao ano.
+
+\begin{figure}[htb]
+	\caption{\label{dashboard_PercentualClassificacaoRiscoHospitalAnoPizza}Percentual de Pacientes segundo Classificação de Risco ao Ano.}
+	\begin{center}
+	    \includegraphics[scale=0.6]{Imagens/2.1.PercentualPacientesClassificacaoRiscoHospitalAnoPizza.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
+
+\clearpage
+A \autoref{dashboard_PercentualPacientesClassificacaoRiscoHospitalMesPizza} mostra o percentual de classificação por triagem nutricional por mês.
+
+\begin{figure}[htb]
+	\caption{\label{dashboard_PercentualPacientesClassificacaoRiscoHospitalMesPizza}Percentual de Pacientes segundo Classificação de Risco detalhado por mês.}
+	\begin{center}
+	    \includegraphics[scale=0.6]{Imagens/2.2.PercentualPacientesClassificacaoRiscoHospitalMesPizza.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
+
+\clearpage
+A \autoref{dashboard_PercentualPacientesClassificacaoRiscoEnfermariaAnoPizza} mostra o percentual de classificação por triagem nutricional por mês.
+
+\begin{figure}[htb]
+	\caption{\label{dashboard_PercentualPacientesClassificacaoRiscoEnfermariaAnoPizza}Percentual de Pacientes segundo Classificação de Risco por Enfermaria ao Ano.}
+	\begin{center}
+	    \includegraphics[scale=0.6]{Imagens/2.3.PercentualPacientesClassificacaoRiscoEnfermariaAnoPizza.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
+
+\clearpage
+A \autoref{dashboard_PercentualPacientesClassificacaoRiscoEnfermariaMesLinha} mostra a tendência de pacientes segundo classificação por enfermaria por mês.
+
+\begin{figure}[htb]
+	\caption{\label{dashboard_PercentualPacientesClassificacaoRiscoEnfermariaMesLinha}Tendência de Pacientes segundo Classificação de Risco por Enfermaria detalhado por mês.}
+	\begin{center}
+	    \includegraphics[scale=0.9]{Imagens/2.4.PercentualPacientesClassificacaoRiscoEnfermariaMesLinha.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
+
+\newpage
+A \autoref{dashboard_PercentualPacienteEstadoNutricionalHospitalAnoPizza} mostra o percentual de pacientes segundo estado nutricional ao ano.
+
+\begin{figure}[htb]
+	\caption{\label{dashboard_PercentualPacienteEstadoNutricionalHospitalAnoPizza}Percentual de Pacientes segundo Estado Nutricional ao Ano.}
+	\begin{center}
+	    \includegraphics[scale=0.6]{Imagens/3.1.PercentualPacienteEstadoNutricionalHospitalAnoPizza.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
+
+\newpage
+A \autoref{dashboard_PercentualPacienteEstadoNutricionalHospitalMesLinha} mostra o percentual de pacientes segundo estado nutricional por mês.
+
+\begin{figure}[htb]
+	\caption{\label{dashboard_PercentualPacienteEstadoNutricionalHospitalMesLinha}Percentual de Pacientes segundo Estado Nutricional detalhado por mês.}
+	\begin{center}
+	    \includegraphics[scale=0.6]{Imagens/3.2.PercentualPacienteEstadoNutricionalHospitalMesLinha.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
+
+\newpage
+A \autoref{dashboard_PercentualPacienteEstadoNutricionalEnfermariaAnoPizza} mostra o percentual de pacientes segundo estado nutricional por enfermaria ao ano.
+
+\begin{figure}[htb]
+	\caption{\label{dashboard_PercentualPacienteEstadoNutricionalEnfermariaAnoPizza}Percentual de Pacientes segundo Estado Nutricional por Enfermaria ao Ano.}
+	\begin{center}
+	    \includegraphics[scale=0.6]{Imagens/3.3.PercentualPacienteEstadoNutricionalEnfermariaAnoPizza.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
+
+\newpage
+A \autoref{dashboard_PercentualPacienteEstadoNutricionalEnfermariaMesPizza} mostra a tendência de pacientes segundo estado nutricional por enfermaria por mês.
+
+\begin{figure}[htb]
+	\caption{\label{dashboard_PercentualPacienteEstadoNutricionalEnfermariaMesPizza}Tendência de Pacientes segundo Estado Nutricional por Enfermaria detalhado por mês.}
+	\begin{center}
+	    \includegraphics[scale=0.65]{Imagens/3.4.PercentualPacienteEstadoNutricionalEnfermariaMesPizza.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
+
+\newpage
+A \autoref{dashboard_TotalUsoSuplementoHospitalAnoBarra} mostra a quantidade de pacientes em uso de suplementação ao ano.
+
+\begin{figure}[htb]
+	\caption{\label{dashboard_TotalUsoSuplementoHospitalAnoBarra}Quantidade de Pacientes em Uso de Suplemento.}
+	\begin{center}
+	    \includegraphics[scale=0.57]{Imagens/5.1.TotalUsoSuplementoHospitalAnoBarra.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
+
+A \autoref{dashboard_TotalUsoSuplementoEnfermariaAnoBarra} mostra a quantidade de pacientes em uso de suplementação por enfermaria.
+
+\begin{figure}[htb]
+	\caption{\label{dashboard_TotalUsoSuplementoEnfermariaAnoBarra}Quantidade de Pacientes em Uso de Suplemento por Enfermaria.}
+	\begin{center}
+	    \includegraphics[scale=0.55]{Imagens/5.2.TotalUsoSuplementoEnfermariaAnoBarra.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
+
+\newpage
+A \autoref{dashboard_PercentualPacienteUsoSuplementoHospitalAnoPizza} mostra o percentual de pacientes segundo uso de suplementação ao ano.
+
+\begin{figure}[htb]
+	\caption{\label{dashboard_PercentualPacienteUsoSuplementoHospitalAnoPizza}Percentual de Pacientes segundo Uso de Suplementação ao Ano.}
+	\begin{center}
+	    \includegraphics[scale=0.6]{Imagens/4.1.PercentualPacienteUsoSuplementoHospitalAnoPizza.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
+
+\newpage
+A \autoref{dashboard_PercentualPacienteUsoSuplementoEnfermariaAnoPizza} mostra o percentual de pacientes segundo uso de suplementação por enfermaria ao ano.
+
+\begin{figure}[htb]
+	\caption{\label{dashboard_PercentualPacienteUsoSuplementoEnfermariaAnoPizza}Percentual de Pacientes segundo Uso de Suplementação por Enfermaria ao Ano.}
+	\begin{center}
+	    \includegraphics[scale=0.75]{Imagens/4.3.PercentualPacienteUsoSuplementoEnfermariaAnoPizza.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
+
+\newpage
+A \autoref{dashboard_PercentualPacienteUsoSuplementoEnfermariaMesLinha} mostra a tendência de pacientes segundo uso de suplementação por enfermaria ao ano.
+
+\begin{figure}[htb]
+	\caption{\label{dashboard_PercentualPacienteUsoSuplementoEnfermariaMesLinha}Tendência de Pacientes segundo Uso de Suplementação por Enfermaria detalhado por mês.}
+	\begin{center}
+	    \includegraphics[scale=0.9]{Imagens/4.4.PercentualPacienteUsoSuplementoEnfermariaMesLinha.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
+
+\newpage
+A \autoref{dashboard_TotalUsoSuplementoMediaDeDiasInternadoHospitalMesBarra} mostra um comparativo entre os pacientes que utilizam suplementação com a média de dias em internamento.
+
+\begin{figure}[htb]
+	\caption{\label{dashboard_TotalUsoSuplementoMediaDeDiasInternadoHospitalMesBarra}Comparativo de pacientes que utilizam Suplementação com média de dias internado.}
+	\begin{center}
+	    \includegraphics[scale=0.35]{Imagens/6.1.TotalUsoSuplementoMediaDeDiasInternadoHospitalMesBarra.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
+
+%\newpage
+A \autoref{dashboard_TotalUsoSuplementoMediaDeDiasInternadoEnfermariaMesBarra} mostra um comparativo entre os pacientes que utilizam suplementação com a média de dias em internamento por enfermaria.
+
+\begin{figure}[htb]
+	\caption{\label{dashboard_TotalUsoSuplementoMediaDeDiasInternadoEnfermariaMesBarra}Comparativo de pacientes que utilizam Suplementação com média de dias internado por
+enfermaria.}
+	\begin{center}
+	    \includegraphics[scale=0.35]{Imagens/6.2.TotalUsoSuplementoMediaDeDiasInternadoEnfermariaMesBarra.png}
+	\end{center}
+	\legend{Fonte: Autor.}
+\end{figure}
 % ---
 \chapter{Considerações Finais}
 % ---
+
