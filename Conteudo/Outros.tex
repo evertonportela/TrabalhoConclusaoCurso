@@ -141,7 +141,7 @@ A partir dos arquivos disponibilizados pela Unidade de Nutrição, em formato de
 	\legend{Fonte: Autor.}
 \end{figure}
 
-Na \autoref{fig_etldimensaoenfermaria} os dados relacionados as enfermarias do Hospital Universitário foram consultados do banco de dados do Aplicativo de Gestão para Hospitais universitários (AGHU). 
+Na \autoref{fig_etldimensaoenfermaria} os dados relacionados as enfermarias do Hospital Universitário foram consultados do banco de dados do Aplicativo de Gestão para Hospitais Universitários (AGHU). 
 \begin{figure}[htb]
 	\caption{\label{fig_etldimensaoenfermaria}Processo ETL para a Dimensão Enfermaria.}
 	\begin{center}
@@ -258,7 +258,7 @@ Na \autoref{fig_etlcargafatodatamart} está representado o processo de transform
             \clearpage
 
 \subsection{Mapeamento e Consultas OLAP}
-Com o processo de carga completo, o próximo passo da sequência é a configuração e criação do cubo lógico de dados com as propriedades das medidas e dimensões, como funções de agregação, formatação, funções matemáticas e nome para exibição. A ferramenta utilizada foi o Pentaho Schema Workbench que também é fornecida no pacote Pentaho Community e usa o mecanismo Modrian para se comunicar com os esquemas ROLAP e processar as solicitações de consultas multidimensionais ou MDX como também são conhecidas na sigla em inglês para \textit{Multidimensional Express}. A \autoref{fig_pentahoshemaworkbench} apresenta o cubo lógico "DMNutricao", onde estão definidas as medidas: ClassificacaoDeRisco, EstadoNutricional, Desfecho, Edema, Insumo, DietaEnteral, UsoDeSuplemento, TriagemRealizada, Complicacoes e DiasInternamento que serão utilizados para geração dos \textit{dashboards}, utilizando todas as Dimensões de acordo com o diagrama ER da \autoref{fig_modelagemdatamart}.
+Com o processo de carga completo, o próximo passo da sequência é a configuração e criação do cubo lógico de dados com as propriedades das medidas e dimensões, como funções de agregação, formatação, funções matemáticas e nome para exibição. A ferramenta utilizada foi o Pentaho Schema Workbench que também é fornecida no pacote Pentaho Community e usa o mecanismo Modrian para se comunicar com os esquemas ROLAP e processar as solicitações de consultas multidimensionais ou MDX como também são conhecidas na sigla em inglês para \textit{Multidimensional Express}. A \autoref{fig_pentahoshemaworkbench} apresenta o cubo lógico "DMNutricao", onde estão definidas as medidas: "ClassificacaoDeRisco"," EstadoNutricional", "Desfecho", "Edema", "Insumo", "DietaEnteral", "UsoDeSuplemento", "TriagemRealizada", "Complicacoes" e "DiasInternamento" que serão utilizados para geração dos \textit{dashboards}, utilizando todas as Dimensões de acordo com modelo relacional da \autoref{fig_modelagemdatamart}.
 
 \begin{figure}[htb]
 	\caption{\label{fig_pentahoshemaworkbench}Modelagem do cubo lógico de dados.}

@@ -1,22 +1,102 @@
-\chapter{Fundamentação Teórica}\label{cap_exemplos}
+\chapter{Fundamentação Teórica}\label{cap_fundamentos}
+
+Este capítulo abrange conceitos relacionados ao entendimento do trabalho e que contextualizam um \textit{Business Intelligence} com suas principais características e aplicações, como também em posterior os principais conceitos e funções da nutrição no ambiente hospitalar. 
 
 % ---
 \section{\textit{Business Intelligence}}
 % ---
+O \textit{Business Intelligence} é um conjunto de conceitos e metodologias que apoiam a tomada de decisão a partir de dados obtidos na organização. Um guarda-chuva conceitual, segundo \citeonline{barbieri2011}, pois visa coletar dados, informações e conhecimentos que permitem às empresas competirem de forma mais eficaz em uma abordagem evolutiva da modelagem de dados, capaz de promover a estruturação da informação em depósitos retrospectivos e históricos, permitindo que sejam modelados com ferramentas analíticas. Seu conceito é abrangente e inclui todos os recursos necessários para processar e compartilhar informações com o usuário.
+
+Um ponto importante a ser salientado, é de que um projeto de BI pode proporcionar ganhos não somente aos gestores das organizações, mas também a determinados departamentos que precisem se basear em informações concretas para tomar decisões mais acertadas \cite{antonelli2009}.
+
+É preciso ter em mente que um sistema de BI não existe por si só, ele está estreitamente ligado às fontes de dados subjacentes, sejam sistemas transacionais ou planilhas de suporte, em suma, tudo o que pode ser considerado um repositório primário de dados resultantes de processos de negócio da organização \cite{sezoes2006}. Analisando da perspectiva técnica o conjunto integrado de ferramentas, tecnologias e produtos de software que são usados para coletar dados, integrá-los e analisá-los, inclui, segundo \citeonline{olszakziemba2012}:
+
+\begin{itemize}
+     \item ferramentas para extrair, transformar e carregar dados (ferramentas ETL, \textit{Extration - Transformation - Load}) - são as principais responsáveis pela transferência de dados de sistemas de transação, planilhas e arquivos para \textit{Data Warehouses};
+     \item \textit{data warehouses} - proporcionam local para armazenamento temático de dados agregados e já analisados;
+     \item ferramentas analíticas (\textit{On-line Analytical Processing} - OLAP) - permitem que os usuários acessem, analisem e modelem problemas de negócios e compartilhem informações armazenadas em \textit{Data Warehouses};
+     \item ferramentas de mineração de dados - permitem descobrir vários padrões, generalizações, regularidades e regras em recursos de dados;
+     \item ferramentas para relatórios e consultas \textit{ad hoc} - permitem a criação e utilização de diferentes relatórios sintéticos; e 
+     \item camada de apresentação - aplicações que incluem interfaces gráficas e multimídia cuja tarefa é fornecer informações aos usuários de forma confortável e acessível.
+\end{itemize}
+
+Os itens anteriormente citados, encontram-se melhor detalhados nas subseções a seguir.
+
 % ---
-\subsection{\textit{Data Warehouse}}
-% ---
-% ---
-\subsection{\textit{Extract - Transform - Load} - ETL}
-% ---
-% ---
-\subsection{\textit{Online Analytical Processing} - OLAP}
+\subsection{\textit{Extract, Transform, Load} - ETL} \label{subD-etl}
 % ---
 
+Para que os dados sejam guiados da fonte para a plataforma BI, existe um processo de carregamento denominado ETL. \citeonline{braghittoni2017} define os três estágios do ETL da seguinte forma:
+\begin{itemize}
+    \item \textbf{Extract}: é o processo de extrair dados das fontes de origem de forma periódica, lendo uma ou mais fontes de informação. Além disso, à medida que o processo de carregamento se repete, é necessário lidar com tratamento de erros e avaliar possíveis indisponibilidades;
+    \item \textbf{Transform}: é o processo pelo qual os dados são processados, colocados em um formato específico, verificados mediantes as regras de negócios, calculados e etc. ficando disponíveis para o processo de \textit{load};
+    \item \textbf{Load}: é o processo de incorporação de dados na plataforma de BI. A inclusão desses dados deve ser feita de modo incremental, uma vez que, com as informações inseridas os dados não podem ser alteradas. Entretanto existem técnicas para lidar com essas situações dentro do \textit{Business Intelligence}.
+\end{itemize}
+% ---
+\subsection{\textit{Data Warehouse}} \label{subD-datawarehouse}
+% ---
+O \textit{data warehouse} é o coração da plataforma de BI. Elé é um banco de dados relacional, contudo é desenhado para responder às pesquisas da forma mais performática possível, sendo chamado também de banco de dados dimensional, em decorrência do desenho ser baseado em dimensões. Diferentemente dos bancos de dados transacionais, onde as formas normais guiam a modelagem de dados, o DW é um banco de dados desnormalizado \cite{braghittoni2017}.
+
+Ainda segundo \citeonline{turban2008}, é também um repositório de dados atuais e históricos de possível interesse aos gestores da organização. Uma coleção de dados orientada por assunto, integrada, variável no tempo e não-volátil, que proporcional suporte ao processo decisório.
+% ---
+\subsection{\textit{Online Analytical Processing} - OLAP} \label{subD-olap}
+% ---
+O processamento analítico online (OLAP) refere-se às várias atividades normalmente realizadas por usuários finais em sistemas online. Não há consenso sobre quais atividades são consideradas OLAP, mas normalmente, inclui atividades como gerar e responder a consultas, solicitar relatórios e gráficos \textit{ad hoc} como também sua execução, realizar análises estatísticas e criar apresentações visuais. Muitas pessoas também pensam em análises e apresentações multidimensionais e mineração de dados como atividades OLAP. Basicamente, os produtos OLAP oferecem a capacidade de modelar, analisar e visualizar grandes conjuntos de dados, tanto para sistemas de gerenciamento de banco de dados (SGBD) e, mais comumente, para sistemas de \textit{data warehouse}, além de também oferecer uma visão conceitual multidimensional dos dados \cite{turban2008}.
+
+As ferramentas OLAP podem ser implementadas de diversas formas, segundo \citeonline{carvalho2003}, são classificadas em três tipos:
+\begin{itemize}
+    \item \textit{Multidimensional On-Line Analytical Processing} - MOLAP: na arquitetura MOLAP, os dados são armazenados em um banco de dados multidimensional onde o servidor MOLAP atua e o usuário trabalha, coleta e processa vários dados no servidor. Os dados são armazenados em estruturas de dados de array para melhor desempenho ao acessá-los, tornando armazenamento menor em relação ao espaço usado para armazenar os mesmos dados em um banco de dados relacional. Além de ser uma arquitetura rápida, outra vantagem é o rico e complexo conjunto de funções analíticas presentes em bancos multidimensionais.
+    \item \textit{Relational On-Line Analytical Processing} - ROLAP: a arquitetura ROLAP é uma simulação da tecnologia OLAP feita em bancos de dados relacionais, que utilizando uma estrutura relacional tem a vantagem de não limitar o tamanho do armazenamento de dados. Esta ferramenta não usa cubos pré-calculados como a MOLAP. Quando um usuário cria uma consulta na interface gráfica, a ferramenta acessa os metadados ou outros recursos de que dispõe para gerar uma consulta SQL (\textit{Structured Query Language}) e devolver uma resposta;
+    \item \textit{Hybrid On-Line Analytical Processing} - HOLAP: chamada de computação híbrida, consegue combinar a capacidade e escalabilidade das ferramentas ROLAP com o excelente desempenho dos bancos de dados multidimensionais. Por exemplo, supondo uma base de clientes que esteja espalhada por 500 cidades, 23 estados, 5 regiões e um total geral. No nível da cidade, o armazenamento multidimensional resolveria consultas para vendas totais. Se, entretanto, fosse necessário consultar as vendas totais de um determinado cliente, o banco de dados relacional responderia muito mais rápido à solicitação. Esta situação é típica da indicação da arquitetura HOLAP.
+\end{itemize}
+
+Segundo \citeonline{turban2008}, para apresentar dados no formato multidimensional, três fatores são levados em consideração: as dimensões, as medidas e o tempo. Para representar esses dados com alguma medida de interesse, são usados cubos de dados. O termo "cubo" se refere ao conjunto de dados altamente correlacionado que é organizado para permitir que os usuários combinem qualquer atributo a fim de criar diferentes visões bidimensionais, um exemplo de cubo é mostrado na \autoref{fig_cuboturban}. Apesar de receber a nomenclatura de cubo, os dados podem ser bidimensionais, tridimensionais ou com apenas uma dimensão.
+
+
+\begin{figure}[htb]
+	\caption{\label{fig_cuboturban}Visão e Análise de cubo.}
+	\begin{center}
+	    \includegraphics[scale=1]{Imagens/figura - cubo olap turban.png}
+	\end{center}
+	\legend{Fonte: \cite{turban2008}.}
+\end{figure}
+% ---
+\subsection{Ferramentas de apresentação} \label{subD-relatorios}
+% ---
+As tecnologias visuais podem condensar 1.000 números em uma única imagem e tornar os aplicativos de suporte à decisão mais atraentes e compreensíveis para os usuários. A visualização de dados refere-se a tecnologias que suportam a visualização e às vezes a interpretação de dados e informações em diferentes pontos da cadeia de processamento de dados. Inclui imagens digitais, sistemas geográficos, interfaces gráficas de usuário, gráficos, realidade virtual, representações dimensionais, filmes e animações. Ferramentas visuais podem ajudar a identificar relacionamentos, como tendências \cite{turban2008}.
 % ---
 \section{Pentaho \textit{Data Integration and Analytics Platform}}
 % ---
+Os produtos Pentaho fazem parte de uma plataforma abrangente usada para acessar, integrar, manipular, visualizar e analisar dados. Incluem componentes baseados na web e ferramentas de design. É um projeto de código aberto, desenvolvido em Java e mantido pela Hitachi Vantara com uma comunidade fortemente ativa. A plataforma é oferecida em duas diferentes edições: a \textit{Community Edition} (CE)\footnote{Pentaho Community Edition: \url{https://sourceforge.net/projects/pentaho/}} e a \textit{Enterprise Edition} (EE)\footnote{Pentaho Enterprise Edition: \url{https://www.hitachivantara.com/en-us/products/data-management-analytics/pentaho/download-pentaho.html}}. A versão CE é distribuída gratuitamente com o foco de ser continuamente desenvolvida de forma cooperativa. A versão EE conta com recursos mais avançados como, por exemplo, suporte a dados de \textit{streaming}, biblioteca de conectores ampliada, suporte técnico da Hitachi Vantara, além de outras vantagens prevista no pacote comercial. 
 
+Nesta seção, serão apresentadas as ferramentas disponíveis na versão Pentaho CE, necessárias para o desenvolvimento de um projeto de BI.
+
+\subsection{Pentaho Data Integration - PDI}
+Pentaho Data Integration (PDI) fornece acesso a um motor de Extração, Transformação e Carregamento (ETL) que captura os dados certos, limpa os dados e armazena os dados usando um formato uniforme que é acessível e relevante para os usuários finais e tecnologias IoT. O cliente PDI é um aplicativo de desktop que permite criar transformações e agendar e executar trabalhos \cite{pentahodocumentation}.
+
+Os usos comuns do cliente PDI incluem:
+\begin{itemize}
+    \item Migração de dados entre diferentes bancos de dados e aplicativos;
+    \item Carregar enormes conjuntos de dados em bancos de dados, aproveitando ao máximo os ambientes de processamento em nuvem, em \textit{cluster} e massivamente paralelos;
+    \item Limpeza de dados com etapas que variam de transformações muito simples a muito complexas;
+    \item Integração de dados, incluindo a capacidade de aproveitar ETL em tempo real como uma fonte de dados para o Pentaho Reporting;
+    \item População do \textit{data warehouse} com suporte integrado para alterar lentamente as dimensões e criação de chaves substitutas.
+\end{itemize}
+
+\subsection{Pentaho Schema Workbench - PSW}
+Pentaho Schema Workbench (PSW) é o software usado para criar esquemas que mapeiam o modelo físico de dados multidimensionais com o modelo lógico do cubo de dados, utilizando o motor OLAP escrito em Java, Mondrian, também desenvolvido pela Pentaho. O PSW constrói a interface entre os modelos atráves de arquivos XML, que são executados pelo Mondrian realizar as consultas escritas em linguagem MDX (\textit{Multidimensional Express}).
+
+O PSW fornece as seguintes funcionalidades:
+
+\begin{itemize}
+    \item Editor de esquema integrado para construção de cubos OLAP;
+    \item Teste de consultas MDX nos esquemas e bases de dados.
+\end{itemize}
+
+\subsection{Pentaho Aggregation Designer - PAD}
+\subsection{Pentaho Business Analytics Platform}
+\subsection{Pentaho Report Designer - PRD}
+\subsection{Saiku Analytics}
 % ---
 \section{Avaliação Nutricional}
 % ---
