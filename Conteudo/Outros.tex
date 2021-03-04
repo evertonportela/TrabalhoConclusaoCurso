@@ -64,7 +64,7 @@ Para o indicador de Uso de Suplementação foram solicitadas as seguintes inform
     \item Percentual de Pacientes segundo Uso de Suplementação por Enfermaria ao ano;
     \item Tendência de Pacientes segundo Uso de Suplementação por Enfermaria detalhado por mês;
     \item Comparativo de pacientes que utilizam Suplementação com média de dias internado;
-    \item Comparativo de pacientes que utilizam Suplementação com média de dias internado por enfermaria.
+    \item Comparativo de pacientes que utilizam Suplementação com média de dias internado por Enfermaria.
 \end{itemize}
 
 Para o indicador de Insumo foi solicitada a seguinte informação:
@@ -80,7 +80,7 @@ Para o indicador de Uso de Dieta Enteral foram solicitadas as seguintes informa�
     \item Percentual de Pacientes segundo Uso de Dieta Enteral por Enfermaria ao ano;
     \item Tendência de Pacientes segundo Uso de Dieta Enteral por Enfermaria detalhado por mês;
     \item Comparativo de pacientes que utilizam Dieta Enteral com média de dias internado;
-    \item Comparativo de pacientes que utilizam Dieta Enteral com média de dias internado por enfermaria.
+    \item Comparativo de pacientes que utilizam Dieta Enteral com média de dias internado por Enfermaria.
 \end{itemize}
 
 Para o indicador de Complicações, que podem ocorrer por Uso de Suplementação e Uso de Dieta Enteral foram solicitadas as seguintes informações:
@@ -130,7 +130,7 @@ O projeto multidimensional e o projeto do cubo ROLAP foram construídos com a fe
 \subsection{Processo de Extração, Transformação e Carga}
 Com o modelo dimensional construído, foi dada sequência à próxima etapa do projeto, o desenvolvimento do processo de extração, transformação e carga. Para a fase de ETL foi utilizado o \textit{Pentaho Data Integration} (PDI), ferramenta da Pentaho utilizada para sistematizar o processo de tratamento e limpeza dos dados oriundos das fontes de dados e inserção nos armazéns de dados e nos \textit{Data Marts}.
 
-A partir dos arquivos disponibilizados pela Unidade de Nutrição, em formato de planilha eletrônica do \textit{Microsoft Office}, foram corrigidos, padronizados e tratados todos os desvios e inconsistências encontradas. Sequencialmente foi iniciada a carga dos dados no DW, concluindo a persistência dos dados consolidados. Foram desenvolvidos um \textit{script} ETL para cada dimensão e um \textit{script} para a tabela de fato, resultando em 14 \textit{scripts} ETL. A seguir, na \autoref{fig_etldimensaohospital} está o processo de transformação utilizado para a carga das informações do hospital. 
+A partir dos arquivos disponibilizados pela Unidade de Nutrição, em formato de planilha eletrônica do \textit{Microsoft Office}, foram corrigidos, padronizados e tratados todos os desvios e inconsistências encontradas. Sequencialmente foi iniciada a carga dos dados no DW, concluindo a persistência dos dados consolidados. Foram desenvolvidos um \textit{script} ETL para cada dimensão e um \textit{script} para a tabela de fato, resultando em 14 \textit{scripts} ETL. Na \autoref{fig_etldimensaohospital} está o processo de transformação utilizado para a carga das informações do hospital. 
 
 \begin{figure}[htb]
 	\caption{\label{fig_etldimensaohospital}Processo ETL para a Dimensão Hospital.}
@@ -191,7 +191,7 @@ Na \autoref{fig_etldimensaosuplementacao} está o processo de transformação ut
 \end{figure}
 
 \newpage
-A seguir, na \autoref{fig_etldimensaoinsumo} está o processo de transformação utilizado para a carga das informações da Dimensão Insumo.
+Na \autoref{fig_etldimensaoinsumo} está o processo de transformação utilizado para a carga das informações da Dimensão Insumo.
 
 \begin{figure}[htb]
 	\caption{\label{fig_etldimensaoinsumo}Processo ETL para a Dimensão Insumos.}
@@ -211,7 +211,7 @@ Na \autoref{fig_etldimensaoestado} está o processo de transformação utilizado
 	\legend{Fonte: Autor.}
 \end{figure}
 
-A seguir, na \autoref{fig_etldimensaoedema} está o processo de transformação utilizado para a carga das informações da Dimensão Edema.
+Na \autoref{fig_etldimensaoedema} está o processo de transformação utilizado para a carga das informações da Dimensão Edema.
 \begin{figure}[htb]
 	\caption{\label{fig_etldimensaoedema}Processo ETL para a Dimensão Edema.}
 	\begin{center}
@@ -331,7 +331,7 @@ Ele também utiliza o motor Mondrian para as consultas aos cubos ROLAP.
 
 Também permite que o usuário final elabore as próprias consultas com vários gráficos disponíveis e função arrastar e soltar (\textit{drag in drop}) tornando a experiência mais intuitiva, dispensando conhecimento prévio em SQL ou MDX. 
 
-\section{Resultados e Discursões}
+\section{Resultados e Discussões}
 
 A plataforma de integração e análise de dados da Pentaho permite que as organizações acessem, preparem e analisem todos os dados de qualquer fonte, em qualquer ambiente \cite{pentahosite}. E o \textit{Saiku Analytics} permite realizar análises complexas e poderosas usando uma interface fácil, arrastando e soltando as medidas e dimensões por meio do navegador criando relatórios detalhados e ótimas visualizações gráficas \cite{meteoribisite}. A seguir, estão  os resultados obtidos conforme as demandas solicitadas pela Unidade de Nutrição Clínica do HU-UFS.
 
