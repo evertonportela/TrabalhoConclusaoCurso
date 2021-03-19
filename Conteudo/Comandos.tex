@@ -9,7 +9,7 @@ O \textit{Business Intelligence} (BI) é um conjunto de conceitos e metodologias
 
 Um ponto importante a ser salientado, é de que um projeto de BI pode proporcionar ganhos não somente aos gestores das organizações, mas também a determinados departamentos que precisem se basear em informações concretas para tomar decisões satisfatórias \cite{antonelli2009}.
 
-É preciso ter em mente que um sistema de BI não existe por si só, ele está estreitamente ligado às fontes de dados subjacentes, sejam sistemas transacionais ou planilhas de suporte, em suma, tudo o que pode ser considerado um repositório primário de dados resultantes de processos de negócio da organização \cite{sezoes2006}. Analisando da perspectiva técnica o conjunto integrado de ferramentas, tecnologias e produtos de software que são usados para coletar dados, integrá-los e analisá-los, inclui, segundo \citeonline{olszakziemba2012}:
+É preciso ter em mente que um sistema de BI não existe por si só, ele está estreitamente ligado às fontes de dados subjacentes, sejam sistemas transacionais ou planilhas de suporte, em suma, tudo o que pode ser considerado um repositório primário de dados resultantes de processos de negócio da organização \cite{sezoes2006}. De forma técnica o conjunto integrado de ferramentas, tecnologias e produtos de software que são usados para coletar dados, integrá-los e analisá-los, inclui, segundo \citeonline{olszakziemba2012}:
 
 \begin{itemize}
      \item ferramentas para extrair, transformar e carregar dados (ferramentas ETL, \textit{Extration - Transformation - Load}) - são as principais responsáveis pela transferência de dados de sistemas de transação, planilhas e arquivos para \textit{Data Warehouses};
@@ -20,7 +20,7 @@ Um ponto importante a ser salientado, é de que um projeto de BI pode proporcion
      \item camada de apresentação - aplicações que incluem interfaces gráficas e multimídia cuja tarefa é fornecer informações aos usuários de forma confortável e acessível.
 \end{itemize}
 
-Os itens anteriormente citados, encontram-se melhor detalhados nas subseções \autoref{subD-etl}, \autoref{subD-datawarehouse}, \autoref{subD-olap}, \autoref{subD-relatorios} e \autoref{subD-relatorios}.
+Os itens anteriormente citados, serão melhor detalhados nas subseções \autoref{subD-etl}, \autoref{subD-datawarehouse}, \autoref{subD-olap}, \autoref{subD-relatorios} e \autoref{subD-relatorios}.
 
 % ---
 \subsection{\textit{Extract, Transform, Load}} \label{subD-etl}
@@ -66,12 +66,12 @@ As tecnologias visuais podem condensar 1.000 números em uma única imagem e tor
 % ---
 \section{\textit{Pentaho Data Integration and Analytics Platform}}
 % ---
-Os produtos Pentaho fazem parte de uma plataforma abrangente usada para acessar, integrar, manipular, visualizar e analisar dados. Incluem componentes baseados na web e ferramentas de design. É um projeto de código aberto, desenvolvido em Java e mantido pela Hitachi Vantara© com uma comunidade ativa. A plataforma é oferecida em duas diferentes edições: a \textit{Community Edition}\footnote{\textit{Pentaho Community Edition}: \url{https://sourceforge.net/projects/pentaho/}} e a \textit{Enterprise Edition}\footnote{\textit{Pentaho Enterprise Edition}: \url{https://www.hitachivantara.com/en-us/products/data-management-analytics/pentaho/download-pentaho.html}}. A versão \textit{Community Edition} é distribuída gratuitamente com o foco de ser continuamente desenvolvida de forma cooperativa. A versão \textit{Enterprise Edition} conta com recursos mais avançados como, por exemplo, suporte a dados de \textit{streaming}, biblioteca de conectores ampliada, suporte técnico da Hitachi Vantara, além de outras vantagens prevista no pacote comercial. 
+Os produtos Pentaho fazem parte de uma plataforma abrangente usada para acessar, integrar, manipular, visualizar e analisar dados. Incluem componentes baseados na \textit{web} e ferramentas de \textit{design}. É um projeto de código aberto, desenvolvido em Java e mantido pela Hitachi Vantara© com uma comunidade ativa. A plataforma é oferecida em duas diferentes edições: a \textit{Community Edition}\footnote{\textit{Pentaho Community Edition}: \url{https://sourceforge.net/projects/pentaho/}} e a \textit{Enterprise Edition}\footnote{\textit{Pentaho Enterprise Edition}: \url{https://www.hitachivantara.com/en-us/products/data-management-analytics/pentaho/download-pentaho.html}}. A versão \textit{Community Edition} é distribuída gratuitamente com o foco de ser continuamente desenvolvida de forma cooperativa. A versão \textit{Enterprise Edition} conta com recursos mais avançados como, por exemplo, suporte a dados de \textit{streaming}, biblioteca de conectores ampliada, suporte técnico da Hitachi Vantara, além de outras vantagens prevista no pacote comercial. 
 
 Nesta seção, serão apresentadas as ferramentas disponíveis na versão \textit{Pentaho Community Edition}, necessárias para o desenvolvimento de um projeto de BI.
 
 \subsection{\textit{Pentaho Data Integration}}
-\textit{Pentaho Data Integration} (PDI) fornece acesso a um motor de extração, transformação e carregamento (ETL) que captura os dados certos, limpa os dados e armazena os dados usando um formato uniforme que é acessível e relevante para os usuários finais e tecnologias IoT. O cliente PDI é um aplicativo de desktop que permite criar transformações e agendar e executar trabalhos \cite{pentahodocumentation}.
+\textit{Pentaho Data Integration} (PDI) fornece acesso a um motor de extração, transformação e carregamento (ETL) que captura os dados certos, limpa os dados e armazena os dados usando um formato uniforme que é acessível e relevante para os usuários finais e tecnologias \textit{Internet of Things} (IoT). O cliente PDI é um aplicativo de \textit{desktop} que permite criar transformações e agendar e executar trabalhos \cite{pentahodocumentation}.
 
 Os usos comuns do cliente PDI incluem:
 \begin{itemize}
@@ -83,7 +83,7 @@ Os usos comuns do cliente PDI incluem:
 \end{itemize}
 
 \subsection{\textit{Pentaho Schema Workbench}}
-\textit{Pentaho Schema Workbench} (PSW) é o software usado para criar esquemas que mapeiam o modelo físico de dados multidimensionais com o modelo lógico do cubo de dados, utilizando o motor OLAP escrito em Java, Mondrian, também desenvolvido pela Pentaho. O PSW constrói a interface entre os modelos através de arquivos XML, que são executados pelo Mondrian para realizar as consultas escritas em linguagem \textit{Multidimensional Express} (MDX).
+\textit{Pentaho Schema Workbench} (PSW) é o software usado para criar esquemas que mapeiam o modelo físico de dados multidimensionais com o modelo lógico do cubo de dados, utilizando o motor OLAP escrito em Java, Mondrian, também desenvolvido pela Pentaho. O PSW constrói a interface entre os modelos a partir de arquivos XML, que são executados pelo Mondrian para realizar as consultas escritas em linguagem \textit{Multidimensional Express} (MDX).
 
 O PSW fornece as seguintes funcionalidades:
 
@@ -109,7 +109,7 @@ O \textit{Saiku Analytics} é distribuído pela Meteorite BI© em duas versões,
 \section{Terapia Nutricional}
 A terapia nutricional (TN) é a intervenção nutricional realizada em pacientes hospitalizados, seguindo um protocolo de rotinas e critérios, e tem como principais objetivos prevenir e tratar a desnutrição, preparando o paciente para o procedimento cirúrgico e clínico, melhorando a resposta imunológica e cicatrizante, modulando a resposta orgânica ao tratamento clínico e cirúrgico, prevenindo e tratando as complicações infecciosas e não infecciosas, como também melhorar a qualidade de vida do paciente, diminuir o tempo de internação, diminuir a mortalidade e, consequentemente, diminuir os custos hospitalares \cite{manualnutricao2016, mcclave2013}. 
 
-Existe também segundo, \citeonline{manualnutricao2016} um conjunto de ações para a execução da terapia nutricional no paciente, entre elas estão, realizar triagem nutricional, executar avaliação nutricional, calcular necessidades de nutrientes e executar um acompanhamento nutricional até o desfecho da alta médica. O processo mais coerente e produtivo para início da avaliação do estado nutricional em unidades hospitalares é realizar a triagem nutricional \cite{protocolonutricionaladulto}. Na \autoref{subD-triagem} são melhor detalhadas as características da triagem nutricional e algumas atividades subsequentes relevantes para entendimento dos próximos capítulos, são elas, a avaliação nutricional na \autoref{subD-avaliacao} e os indicadores de qualidade em terapia nutricional na \autoref{subD-indicadores}. 
+Segundo o \citeonline{manualnutricao2016}, existe também um conjunto de ações para a execução da terapia nutricional no paciente, entre elas estão, realizar triagem nutricional, executar avaliação nutricional, calcular necessidades de nutrientes e executar um acompanhamento nutricional até o desfecho da alta médica. O processo mais coerente e produtivo para início da avaliação do estado nutricional em unidades hospitalares é realizar a triagem nutricional \cite{protocolonutricionaladulto}. Na \autoref{subD-triagem} são melhor detalhadas as características da triagem nutricional e algumas atividades subsequentes relevantes para entendimento dos próximos capítulos, são elas, a avaliação nutricional na \autoref{subD-avaliacao} e os indicadores de qualidade em terapia nutricional na \autoref{subD-indicadores}. 
 
 \subsection{Triagem Nutricional} \label{subD-triagem}
 Triagem nutricional é definida como um processo de identificação das características conhecidas por estarem relacionadas a problemas nutricionais, com o objetivo de identificar indivíduos desnutridos ou em risco, para que sejam instituídas medidas de intervenção nutricional mais precocemente. Um dos instrumentos de triagem utilizados é o \textit{Nutritional Risk Screening} (NRS). Este instrumento foi desenhado para aplicação em ambiente hospitalar e baseia o rastreamento de risco nutricional nos critérios: perda de peso dos últimos três meses, índice de massa corporal (IMC), ingestão alimentar (apetite e capacidade de se alimentar) e fator de estresse. Um fator de risco adicional para ajustar a classificação de risco é a idade acima de 70 anos \cite{protocolonutricionaladulto, manualnutricao2016}. Para crianças o instrumento indicado pela \textit{European Society of Parenteral and Enteral Nutrition} (ESPEN) é o \textit{Screening Tool for Risk on Nutritional Status and Growth}, cujo termo técnico adotado é \textit{STRONG Kids} \cite{protocolonutricionalinfantil}. 
@@ -151,7 +151,7 @@ TN. \newline Frequência: Bimestral. & > 75\% \\ \hline
 %\fonte{Adaptado de \cite{protocolonutricionaladulto}.}
 \end{quadro}
 
-\section{Considerações finais do capítulo}
+\section{Considerações do capítulo}
 Neste capítulo descreveu-se as características dos sistemas de \textit{Business Intelligence}. Também foram citadas as ferramentas da \textit{Pentaho Platform} e detalhes sobre suas funções. Posteriormente foi definido o conceito de terapia nutricional e apresentados indicadores de qualidade em terapia nutricional.
 
 No próximo capítulo serão detalhados os resultados da revisão sistemática realizada para conhecer características de gerenciamento e análise dos sistemas de apoio à decisão para nutrição hospitalar existentes.
