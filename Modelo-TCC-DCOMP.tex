@@ -20,6 +20,9 @@
 %Utilize aqui seu pacote preferido para algoritmos
 \usepackage[linesnumbered]{algorithm2e}
 
+% usado por fichacatalografica.tex
+\usepackage{lastpage}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %Compila o indice
@@ -39,18 +42,20 @@
 
 \pretextual
 
-\titulo{Modelo Canônico de Trabalho Acadêmico com abnTeX2: Customização para o Departamento de Computação} 
-\autor{Arnold Schwarzenegger da Silva}
-\orientador{Andrew S. Tanenbaum}
-\coorientador{Donald Knuth}
-\curso{Ciência da Computação}
+\titulo{Uma solução de \bfseries{\itshape{Business Intelligence}} para a Unidade de Nutrição Clínica do Hospital Universitário de Aracaju} 
+
+\autor{Everton Portela Santos}
+\orientador{Profª Drª Adicinéia Aparecida de Oliveira}
+\curso{Sistemas de Informação}
 
 \inserirInformacoesPDF
 
 \imprimircapa
 \imprimirfolhaderosto*
 
-\include{Pre_Textual/Dedicatoria}
+%\include{Pre_Textual/Dedicatoria}
+\include{Pre_Textual/Fichacatalografica}
+\include{Pre_Textual/Folhadeaprovacao}
 \include{Pre_Textual/Agradecimentos}
 \include{Pre_Textual/Epigrafe}
 \include{Pre_Textual/Resumo}
@@ -59,12 +64,12 @@
 
 \mostrarlistadeILUSTRACOES
 \mostrarlistadeQUADROS
-\mostrarlistadeTABELAS
-\mostrarlistadeCODIGOS
-\mostrarlistadeALGORITMOS
+%\mostrarlistadeTABELAS
+%\mostrarlistadeCODIGOS
+%\mostrarlistadeALGORITMOS
  
 \include{Pre_Textual/Abreviaturas}
-\include{Pre_Textual/Simbolos}
+%\include{Pre_Textual/Simbolos}
     
 \mostrarSUMARIO
 
@@ -77,8 +82,8 @@
 \include{Conteudo/Comandos}
 \include{Conteudo/ConteudoEspecifico}
 \include{Conteudo/Outros}
-\include{Conteudo/Customizacao}
-\include{Conteudo/Conclusao}
+%\include{Conteudo/Customizacao}
+%\include{Conteudo/Conclusao}
 
 \phantompart
 \bibliography{Bibliografia}

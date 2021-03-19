@@ -1,17 +1,53 @@
 \chapter{Introdução}
+Segundo o \citeonline{manualnutricao2016}, pesquisas indicam que alguns indivíduos não se alimentam adequadamente durante o período de internação hospitalar, o que acarreta um estado de desnutrição, que influencia no aumento do risco de complicações pós-operatórias, doenças relacionadas como lesões e infecções e é associada ao aumento do tempo de internação, reinternação e maiores custos hospitalares.
 
-Este documento e seu código-fonte são exemplos de referência de uso da classe \textbf{abntex2} e do pacote \textbf{abntex2cite}. O documento exemplifica a elaboração de trabalho acadêmico (tese, dissertação e outros do gênero) produzido conforme a ABNT NBR 14724:2011 \emph{Informação e documentação - Trabalhos acadêmicos - Apresentação}.
+São necessários critérios que identifiquem o risco nutricional na admissão do paciente e durante sua permanência no hospital, sendo assim, necessário implementá-los na rotina hospitalar, visto que a perda de nutrientes essenciais ao organismo, pode ocorrer durante o período de hospitalização. Identificar a desnutrição é um objetivo essencial a ser alcançado no tratamento geral de pacientes hospitalizados. O diagnóstico adequado é fundamental para que a terapia nutricional possa ser realizada com qualidade e iniciada o mais rápido possível \cite{keller2014}.
 
-A expressão ``Modelo Canônico'' é utilizada para indicar que \abnTeX\ não é modelo específico de nenhuma universidade ou instituição, mas que implementa tão somente os requisitos das normas da ABNT. Uma lista completa das normas observadas pelo \abnTeX\ é apresentada em \citeonline{abntex2classe}.
+Considerando avanços na qualidade dos serviços de saúde e maior precisão no diagnóstico e no tratamento de doenças, o setor de saúde tem seguindo uma tendência mundial e intensificado investimentos em Tecnologia de Informação e Comunicação (TIC) nos estabelecimentos de saúde \cite{saudedigital2019}. O uso dessas tecnologias é ainda, segundo a \citeonline{ehealth}, definida como e-Saúde e inclui tanto a saúde móvel (\textit{mHealth} em inglês) como a saúde eletrônica (\textit{eHealth} em inglês). A saúde digital contempla o uso geral das TIC, para melhorar a saúde humana, os serviços de atenção à saúde e o bem-estar de indivíduos e populações, sendo uma importante ferramenta para ajudar os profissionais da saúde a oferecerem os melhores serviços e prevenirem erros médicos.
 
-Sinta-se convidado a participar do projeto \abnTeX! Acesse o site do projeto em \url{http://www.abntex.net.br/}. Também fique livre para conhecer, estudar, alterar e redistribuir o trabalho do \abnTeX, desde que os arquivos modificados tenham seus nomes alterados e que os créditos sejam dados aos autores originais, nos termos da ``The \LaTeX\ Project Public License''\footnote{\url{http://www.latex-project.org/lppl.txt}}.
+Este trabalho descreve o desenvolvimento de uma solução de \textit{Business Intelligence} voltado para a Unidade de Nutrição Clínica do Hospital Universitário de Aracaju. Cujo objetivo é apoiar o processo de tomada de decisão da gerência da unidade e do hospital, oferecendo informações sobre os índices alcançados pela unidade no cuidado nutricional.  
 
-Encorajamos que sejam realizadas customizações específicas deste exemplo para universidades e outras instituições --- como capas, folha de aprovação, etc. Porém, recomendamos que ao invés de se alterar diretamente os arquivos do \abnTeX, distribua-se arquivos com as respectivas customizações. Isso permite que futuras versões do \abnTeX~não se tornem automaticamente incompatíveis com as customizações promovidas. Consulte \citeonline{abntex2-wiki-como-customizar} para mais informações.
 
-Este documento deve ser utilizado como complemento dos manuais do \abnTeX\ \cite{abntex2classe,abntex2cite,abntex2cite-alf} e da classe \textsf{memoir} \cite{memoir}. 
+% ---
+\section{Objetivos}\label{sec-divisoes}
+% ---
+Nesta seção são descritos os objetivos gerais e específicos para realização do corrente trabalho de conclusão de curso.
 
-Esperamos, sinceramente, que o \abnTeX\ aprimore a qualidade do trabalho que você produzirá, de modo que o principal esforço seja concentrado no principal: na contribuição científica. 
+\subsection{Geral}\label{sec-divisoes-subsection}
+Desenvolver uma solução de \textit{Business Intelligence} que auxilie no processo de tomada de decisão de gestores da área nutricional, fornecendo informação para que respondam rapidamente as necessidades inerentes às suas atividades no ambiente hospitalar.
 
-Equipe \abnTeX. 
+\subsection{Específicos}\label{sec-divisoes-subsection}
+Para alcançar o objetivo acima citado, foram propostos os seguintes objetivos específicos:
+\begin{itemize}
+ \item Realizar uma revisão sistemática para obter o estado da arte de publicações sobre a aplicação do conceito de sistemas de apoio à decisão no ambiente nutricional hospitalar;
 
-Lauro César Araujo
+ \item Mapear os indicadores e informações necessárias para os \textit{dashboards};
+
+ \item Elaborar um sistema \textit{Extract - Transform - Load} (ETL) com os dados disponibilizados pela Unidade de Nutrição Clínica;
+ 
+ \item Elaborar um modelo multidimensional de dados;
+ 
+ \item Disponibilizar uma ferramenta de consulta OLAP para auxiliar a tomada de decisão da gestão da Unidade de Nutrição e do Hospital Universitário.
+\end{itemize}
+
+% ---
+\section{Metodologia}\label{sec-divisoes}
+% ---
+Com base nos objetivos definidos esta pesquisa pode ser classificada como pesquisa exploratória, um tipo de pesquisa que visa proporcionar, segundo \citeonline{gil2002}, maior familiaridade com o problema, com vistas a torná-lo mais explícito ou constituir hipóteses.
+Também se caracteriza como pesquisa bibliográfica, em razão ao levantamento bibliográfico realizado na Revisão Sistemática proposta, tendo como base material já elaborado, constituído principalmente de livros e artigos científicos \cite{gil2002}.
+
+A solução de \textit{Business Intelligence} foi implementada utilizando informações e termos técnicos em conformidade com as recomendações presentes no Manual de Terapia Nutricional do SUS \cite{manualnutricao2016}.
+
+% ---
+\section{Estrutura do Documento}\label{sec-divisoes}
+% ---
+Para melhor navegação e entendimento, este documento está estruturado em 5 capítulos, além desta introdução. Os tópicos a seguir descrevem o conteúdo de cada capítulo:
+\begin{itemize}
+ \item Capítulo 2 - Fundamentação Teórica: relata sobre conceitos fundamentais necessários para o entendimento do trabalho, como terapia nutricional, \textit{Business Intelligence} e modelagem multidimensional;
+
+ \item Capítulo 3 - Revisão Sistemática: apresenta o processo metodológico, os resultados e a análise dos artigos selecionados indicando o estado da arte sobre o uso de apoio a decisão para nutrição clínica hospitalar;
+
+ \item Capítulo 4 - Desenvolvimento: discorre sobre os detalhes do \textit{Data Warehouse} e do \textit{Data Mart} construídos, o cubo lógico de dados, o processo de ETL, construção do BI e as consultas implementadas;
+ 
+ \item Capítulo 5 - Considerações Finais: descreve uma visão geral do projeto desenvolvido resumindo todas as informações relevantes. Possíveis melhorias para trabalhos futuros são descritas ao final do capítulo.
+\end{itemize}

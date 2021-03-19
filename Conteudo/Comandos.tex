@@ -1,676 +1,157 @@
-\chapter{Resultados de comandos}\label{cap_exemplos}
+\chapter{Fundamentação Teórica}\label{cap_fundamentos}
 
-\chapterprecis{Isto é uma sinopse de capítulo. A ABNT não traz nenhuma
-normatização a respeito desse tipo de resumo, que é mais comum em romances 
-e livros técnicos.}\index{sinopse de capítulo}
+Este capítulo abrange conceitos relacionados ao entendimento do trabalho e que contextualizam um \textit{Business Intelligence} com suas principais características e aplicações, como também em posterior os principais conceitos e funções da nutrição no ambiente hospitalar. 
 
 % ---
-\section{Codificação dos arquivos: UTF8}
+\section{\textit{Business Intelligence}}
 % ---
+O \textit{Business Intelligence} (BI) é um conjunto de conceitos e metodologias que apoiam a tomada de decisão a partir de dados obtidos na organização. Um guarda-chuva conceitual, segundo \citeonline{barbieri2011}, pois visa coletar dados, informações e conhecimentos que permitem às empresas competirem de forma mais eficaz em uma abordagem evolutiva da modelagem de dados, capaz de promover a estruturação da informação em depósitos retrospectivos e históricos, permitindo que sejam modelados com ferramentas analíticas. Seu conceito é abrangente e inclui todos os recursos necessários para processar e compartilhar informações com o usuário.
 
-A codificação de todos os arquivos do \abnTeX\ é \texttt{UTF8}. É necessário que
-você utilize a mesma codificação nos documentos que escrever, inclusive nos
-arquivos de base bibliográficas |.bib|.
+Um ponto importante a ser salientado, é de que um projeto de BI pode proporcionar ganhos não somente aos gestores das organizações, mas também a determinados departamentos que precisem se basear em informações concretas para tomar decisões satisfatórias \cite{antonelli2009}.
 
-% ---
-\section{Citações diretas}
-\label{sec-citacao}
-% ---
+É preciso ter em mente que um sistema de BI não existe por si só, ele está estreitamente ligado às fontes de dados subjacentes, sejam sistemas transacionais ou planilhas de suporte, em suma, tudo o que pode ser considerado um repositório primário de dados resultantes de processos de negócio da organização \cite{sezoes2006}. De forma técnica o conjunto integrado de ferramentas, tecnologias e produtos de software que são usados para coletar dados, integrá-los e analisá-los, inclui, segundo \citeonline{olszakziemba2012}:
 
-\index{citações!diretas}Utilize o ambiente \texttt{citacao} para incluir citações diretas com mais de três linhas:
+\begin{itemize}
+     \item ferramentas para extrair, transformar e carregar dados (ferramentas ETL, \textit{Extration - Transformation - Load}) - são as principais responsáveis pela transferência de dados de sistemas de transação, planilhas e arquivos para \textit{Data Warehouses};
+     \item \textit{Data Warehouses} - proporcionam local para armazenamento temático de dados agregados e já analisados;
+     \item ferramentas analíticas (\textit{On-line Analytical Processing}) - permitem que os usuários acessem, analisem e modelem problemas de negócios e compartilhem informações armazenadas em \textit{Data Warehouses};
+     \item ferramentas de mineração de dados - permitem descobrir vários padrões, generalizações, regularidades e regras em recursos de dados;
+     \item ferramentas para relatórios e consultas \textit{ad hoc} - permitem a criação e utilização de diferentes relatórios sintéticos;
+     \item camada de apresentação - aplicações que incluem interfaces gráficas e multimídia cuja tarefa é fornecer informações aos usuários de forma confortável e acessível.
+\end{itemize}
 
-\begin{citacao}
-As citações diretas, no texto, com mais de três linhas, devem ser
-destacadas com recuo de 4 cm da margem esquerda, com letra menor que a do texto utilizado e sem as aspas. No caso de documentos datilografados, deve-se observar apenas o recuo \cite[5.3]{NBR10520:2002}.
-\end{citacao}
-
-Use o ambiente assim:
-
-\begin{verbatim}
-\begin{citacao}
-As citações diretas, no texto, com mais de três linhas [...] 
-deve-se observar apenas o recuo \cite[5.3]{NBR10520:2002}.
-\end{citacao}
-\end{verbatim}
-
-O ambiente \texttt{citacao} pode receber como parâmetro opcional um nome de
-idioma previamente carregado nas opções da classe (\autoref{sec-hifenizacao}). Nesse
-caso, o texto da citação é automaticamente escrito em itálico e a hifenização é
-ajustada para o idioma selecionado na opção do ambiente. Por exemplo:
-
-\begin{verbatim}
-\begin{citacao}[english]
-Text in English language in italic with correct hyphenation.
-\end{citacao}
-\end{verbatim}
-
-Tem como resultado:
-
-\begin{citacao}[english]
-Text in English language in italic with correct hyphenation.
-\end{citacao}
-
-\index{citações!simples}Citações simples, com até três linhas, devem ser
-incluídas com aspas. Observe que em \LaTeX as aspas iniciais são diferentes das
-finais: ``Amor é fogo que arde sem se ver''.
+Os itens anteriormente citados, serão melhor detalhados nas subseções \autoref{subD-etl}, \autoref{subD-datawarehouse}, \autoref{subD-olap}, \autoref{subD-relatorios} e \autoref{subD-relatorios}.
 
 % ---
-\section{Notas de rodapé}
+\subsection{\textit{Extract, Transform, Load}} \label{subD-etl}
 % ---
 
-As notas de rodapé são detalhadas pela NBR 14724:2011 na seção 5.2.1\footnote{As
-notas devem ser digitadas ou datilografadas dentro das margens, ficando
-separadas do texto por um espaço simples de entre as linhas e por filete de 5
-cm, a partir da margem esquerda. Devem ser alinhadas, a partir da segunda linha
-da mesma nota, abaixo da primeira letra da primeira palavra, de forma a destacar
-o expoente, sem espaço entre elas e com fonte menor
-\citeonline[5.2.1]{NBR14724:2011}.}\footnote{Caso uma série de notas sejam
-criadas sequencialmente, o \abnTeX\ instrui o \LaTeX\ para que uma vírgula seja
-colocada após cada número do expoente que indica a nota de rodapé no corpo do
-texto.}\footnote{Verifique se os números do expoente possuem uma vírgula para
-dividi-los no corpo do texto.}. 
-
-
+Para que os dados sejam guiados da fonte para a plataforma BI, existe um processo de carregamento denominado: \textit{extract, transform e load} (ETL). \citeonline{braghittoni2017} define os três estágios do ETL da seguinte forma:
+\begin{itemize}
+    \item \textbf{\textit{Extract}}: é o processo de extrair dados das fontes de origem de forma periódica, lendo uma ou mais fontes de informação. Além disso, à medida que o processo de carregamento se repete, é necessário lidar com tratamento de erros e avaliar possíveis indisponibilidades;
+    \item \textbf{\textit{Transform}}: é o processo pelo qual os dados são processados, colocados em um formato específico, verificados mediante as regras de negócio, calculados e etc., ficando disponíveis para o processo de \textit{load};
+    \item \textbf{\textit{Load}}: é o processo de incorporação de dados na plataforma de BI. A inclusão desses dados deve ser feita de modo incremental, uma vez que, com as informações inseridas os dados não podem ser alterados. Entretanto existem técnicas para lidar com essas situações dentro do \textit{Business Intelligence}.
+\end{itemize}
 % ---
-\section{Tabelas}
+\subsection{\textit{Data Warehouse}} \label{subD-datawarehouse}
 % ---
+O \textit{Data Warehouse} (DW) é o coração da plataforma de BI. Elé é um banco de dados relacional, contudo é desenhado para responder às pesquisas da forma mais performática possível, sendo chamado também de banco de dados dimensional, em decorrência do desenho ser baseado em dimensões. Diferentemente dos bancos de dados transacionais, onde as formas normais guiam a modelagem de dados, o DW é um banco de dados desnormalizado \cite{braghittoni2017}.
 
-\index{tabelas}A \autoref{tab-nivinv} é um exemplo de tabela construída em
-\LaTeX.
-
-\begin{table}[htb]
-\ABNTEXfontereduzida
-\caption[Níveis de investigação]{Níveis de investigação.}
-\label{tab-nivinv}
-\begin{tabular}{p{2.6cm}|p{6.0cm}|p{2.25cm}|p{3.40cm}}
-  %\hline
-   \textbf{Nível de Investigação} & \textbf{Insumos}  & \textbf{Sistemas de Investigação}  & \textbf{Produtos}  \\
-    \hline
-    Meta-nível & Filosofia\index{filosofia} da Ciência  & Epistemologia &
-    Paradigma  \\
-    \hline
-    Nível do objeto & Paradigmas do metanível e evidências do nível inferior &
-    Ciência  & Teorias e modelos \\
-    \hline
-    Nível inferior & Modelos e métodos do nível do objeto e problemas do nível inferior & Prática & Solução de problemas  \\
-   % \hline
-\end{tabular}
-\legend{Fonte: \citeonline{van86}}
-\end{table}
-
-Já a \autoref{tabela-ibge} apresenta uma tabela criada conforme o padrão do
-\citeonline{ibge1993} requerido pelas normas da ABNT para documentos técnicos e
-acadêmicos.
-
-\begin{table}[htb]
-\IBGEtab{%
-  \caption{Um Exemplo de tabela alinhada que pode ser longa
-  ou curta, conforme padrão IBGE.}%
-  \label{tabela-ibge}
-}{%
-  \begin{tabular}{ccc}
-  \toprule
-   Nome & Nascimento & Documento \\
-  \midrule \midrule
-   Maria da Silva & 11/11/1111 & 111.111.111-11 \\
-  \midrule 
-   João Souza & 11/11/2111 & 211.111.111-11 \\
-  \midrule 
-   Laura Vicuña & 05/04/1891 & 3111.111.111-11 \\
-  \bottomrule
-\end{tabular}%
-}{%
-  \fonte{Produzido pelos autores.}%
-  \nota{Esta é uma nota, que diz que os dados são baseados na
-  regressão linear.}%
-  \nota[Anotações]{Uma anotação adicional, que pode ser seguida de várias
-  outras.}%
-  }
-\end{table}
-
-
+É ainda segundo \citeonline{turban2008}, também, um repositório de dados atuais e históricos de possível interesse aos gestores da organização. Uma coleção de dados orientada por assunto, integrada, variável no tempo e não-volátil, que proporciona suporte ao processo decisório.
 % ---
-\section{Figuras}
+\subsection{\textit{Online Analytical Processing}} \label{subD-olap}
 % ---
+\textit{Online Analytical Processing} (OLAP) é o termo em inglês para Processamento Analítico Online, o qual refere-se às várias atividades normalmente realizadas por usuários finais em sistemas online. Não há consenso sobre quais atividades são consideradas OLAP, mas normalmente, inclui atividades como gerar e responder a consultas, solicitar relatórios e gráficos \textit{ad hoc} como também fazem parte da sua execução, realizar análises estatísticas e criar apresentações visuais. Muitas pessoas também pensam em análises e apresentações multidimensionais e mineração de dados como atividades OLAP. Basicamente, os produtos OLAP oferecem a capacidade de modelar, analisar e visualizar grandes conjuntos de dados, tanto para sistemas de gerenciamento de banco de dados (SGBD) e, mais comumente, para sistemas de \textit{Data Warehouse}, além de também oferecer uma visão conceitual multidimensional dos dados \cite{turban2008}.
 
-\index{figuras}Figuras podem ser criadas diretamente em \LaTeX,
-como o exemplo da \autoref{fig_circulo}.
+As ferramentas OLAP podem ser implementadas de diversas formas, segundo \citeonline{carvalho2003}, são classificadas em três tipos:
+\begin{itemize}
+    \item \textit{Multidimensional On-Line Analytical Processing} (MOLAP): na arquitetura MOLAP, os dados são armazenados em um banco de dados multidimensional onde o servidor MOLAP atua e o usuário trabalha, coleta e processa vários dados no servidor. Os dados são armazenados em estruturas de dados de \textit{array} para melhor desempenho ao acessá-los, tornando o armazenamento menor em relação ao espaço usado para armazenar os mesmos dados em um banco de dados relacional. Além de ser uma arquitetura rápida, outra vantagem é o rico e complexo conjunto de funções analíticas presentes em bancos multidimensionais.
+    \item \textit{Relational On-Line Analytical Processing} (ROLAP): a arquitetura ROLAP é uma simulação da tecnologia OLAP feita em bancos de dados relacionais, que utilizando uma estrutura relacional tem a vantagem de não limitar o tamanho do armazenamento de dados. Esta ferramenta não usa cubos pré-calculados como a MOLAP. Quando um usuário cria uma consulta na interface gráfica, a ferramenta acessa os metadados ou outros recursos de que dispõe para gerar uma consulta em \textit{Structured Query Language} (SQL) e devolver uma resposta;
+    \item \textit{Hybrid On-Line Analytical Processing} (HOLAP): chamada de computação híbrida, consegue combinar a capacidade e escalabilidade das ferramentas ROLAP com o excelente desempenho dos bancos de dados multidimensionais. Por exemplo, supondo uma base de clientes que esteja espalhada por 500 cidades, 23 estados, 5 regiões e um total geral. No nível da cidade, o armazenamento multidimensional resolveria consultas para vendas totais. Se, entretanto, fosse necessário consultar as vendas totais de um determinado cliente, o banco de dados relacional responderia muito mais rápido à solicitação. Esta situação é típica da indicação da arquitetura HOLAP.
+\end{itemize}
+
+Segundo \citeonline{turban2008}, para apresentar dados no formato multidimensional, três fatores são levados em consideração: as dimensões, as medidas e o tempo. Para representar esses dados com alguma medida de interesse, são usados cubos de dados. O termo "cubo" se refere ao conjunto de dados altamente correlacionado que é organizado para permitir que os usuários combinem qualquer atributo a fim de criar diferentes visões bidimensionais, um exemplo de cubo é mostrado na \autoref{fig_cuboturban}. Apesar de receber a nomenclatura de cubo, os dados podem ser bidimensionais, tridimensionais ou com apenas uma dimensão.
 
 \begin{figure}[htb]
-	\caption{\label{fig_circulo}A delimitação do espaço}
+	\caption{\label{fig_cuboturban}Visão e Análise de cubo.}
 	\begin{center}
-	    \setlength{\unitlength}{5cm}
-		\begin{picture}(1,1)
-		\put(0,0){\line(0,1){1}}
-		\put(0,0){\line(1,0){1}}
-		\put(0,0){\line(1,1){1}}
-		\put(0,0){\line(1,2){.5}}
-		\put(0,0){\line(1,3){.3333}}
-		\put(0,0){\line(1,4){.25}}
-		\put(0,0){\line(1,5){.2}}
-		\put(0,0){\line(1,6){.1667}}
-		\put(0,0){\line(2,1){1}}
-		\put(0,0){\line(2,3){.6667}}
-		\put(0,0){\line(2,5){.4}}
-		\put(0,0){\line(3,1){1}}
-		\put(0,0){\line(3,2){1}}
-		\put(0,0){\line(3,4){.75}}
-		\put(0,0){\line(3,5){.6}}
-		\put(0,0){\line(4,1){1}}
-		\put(0,0){\line(4,3){1}}
-		\put(0,0){\line(4,5){.8}}
-		\put(0,0){\line(5,1){1}}
-		\put(0,0){\line(5,2){1}}
-		\put(0,0){\line(5,3){1}}
-		\put(0,0){\line(5,4){1}}
-		\put(0,0){\line(5,6){.8333}}
-		\put(0,0){\line(6,1){1}}
-		\put(0,0){\line(6,5){1}}
-		\end{picture}
+	    \includegraphics[scale=0.9]{Imagens/figura - cubo olap turban.png}
 	\end{center}
-	\legend{Fonte: os autores}
+	\legend{Fonte: \cite{turban2008}.}
 \end{figure}
-
-Ou então figuras podem ser incorporadas de arquivos externos, como é o caso da
-\autoref{fig_grafico}. Se a figura que for incluída se tratar de um diagrama, um
-gráfico ou uma ilustração que você mesmo produza, priorize o uso de imagens
-vetoriais no formato PDF. Com isso, o tamanho do arquivo final do trabalho será
-menor, e as imagens terão uma apresentação melhor, principalmente quando
-impressas, uma vez que imagens vetorias são perfeitamente escaláveis para
-qualquer dimensão. Nesse caso, se for utilizar o Microsoft Excel para produzir
-gráficos, ou o Microsoft Word para produzir ilustrações, exporte-os como PDF e
-os incorpore ao documento conforme o exemplo abaixo. No entanto, para manter a
-coerência no uso de software livre (já que você está usando \LaTeX e \abnTeX),
-teste a ferramenta \textsf{InkScape}\index{InkScape}
-(\url{http://inkscape.org/}). Ela é uma excelente opção de código-livre para
-produzir ilustrações vetoriais, similar ao CorelDraw\index{CorelDraw} ou ao Adobe
-Illustrator\index{Adobe Illustrator}. De todo modo, caso não seja possível
-utilizar arquivos de imagens como PDF, utilize qualquer outro formato, como
-JPEG, GIF, BMP, etc. Nesse caso, você pode tentar aprimorar as imagens
-incorporadas com o software livre \textsf{Gimp}\index{Gimp}
-(\url{http://www.gimp.org/}). Ele é uma alternativa livre ao Adobe
-Photoshop\index{Adobe Photoshop}.
-
-\begin{figure}[htb]
-	\caption{\label{fig_grafico}Gráfico produzido em Excel e salvo como PDF}
-	\begin{center}
-	    \includegraphics[scale=0.5]{Imagens/abntex2-modelo-img-marca.pdf}
-	\end{center}
-	\legend{Fonte: \citeonline[p. 24]{araujo2012}}
-\end{figure}
-
 % ---
-\subsection{Figuras em \emph{minipages}}
+\subsection{Ferramentas de apresentação} \label{subD-relatorios}
 % ---
-
-\emph{Minipages} são usadas para inserir textos ou outros elementos em quadros
-com tamanhos e posições controladas. Veja o exemplo da
-\autoref{fig_minipage_imagem1} e da \autoref{fig_minipage_grafico2}.
-
-\begin{figure}[htb]
- \label{teste}
- \centering
-  \begin{minipage}{0.4\textwidth}
-    \centering
-    \caption{Imagem 1 da minipage} \label{fig_minipage_imagem1}
-    \includegraphics[scale=0.9]{Imagens/abntex2-modelo-img-marca.pdf}
-    \legend{Fonte: Produzido pelos autores}
-  \end{minipage}
-  \hfill
-  \begin{minipage}{0.4\textwidth}
-    \centering
-    \caption{Grafico 2 da minipage} \label{fig_minipage_grafico2}
-    \includegraphics[scale=0.2]{Imagens/abntex2-modelo-img-grafico.pdf}
-    \legend{Fonte: \citeonline[p. 24]{araujo2012}}
-  \end{minipage}
-\end{figure}
-
-Observe que, segundo a \citeonline[seções 4.2.1.10 e 5.8]{NBR14724:2011}, as
-ilustrações devem sempre ter numeração contínua e única em todo o documento:
-
-\begin{citacao}
-Qualquer que seja o tipo de ilustração, sua identificação aparece na parte
-superior, precedida da palavra designativa (desenho, esquema, fluxograma,
-fotografia, gráfico, mapa, organograma, planta, quadro, retrato, figura,
-imagem, entre outros), seguida de seu número de ordem de ocorrência no texto,
-em algarismos arábicos, travessão e do respectivo título. Após a ilustração, na
-parte inferior, indicar a fonte consultada (elemento obrigatório, mesmo que
-seja produção do próprio autor), legenda, notas e outras informações
-necessárias à sua compreensão (se houver). A ilustração deve ser citada no
-texto e inserida o mais próximo possível do trecho a que se
-refere. \cite[seções 5.8]{NBR14724:2011}
-\end{citacao}
-
+As tecnologias visuais podem condensar 1.000 números em uma única imagem e tornar os aplicativos de suporte à decisão mais atraentes e compreensíveis para os usuários. A visualização de dados refere-se a tecnologias que suportam a visualização e às vezes a interpretação de dados e informações em diferentes pontos da cadeia de processamento de dados. Inclui imagens digitais, sistemas geográficos, interfaces gráficas de usuário, gráficos, realidade virtual, representações dimensionais, filmes e animações. Ferramentas visuais podem ajudar a identificar relacionamentos, como tendências \cite{turban2008}.
 % ---
-\section{Expressões matemáticas}
+\section{\textit{Pentaho Data Integration and Analytics Platform}}
 % ---
-
-\index{expressões matemáticas}Use o ambiente \texttt{equation} para escrever
-expressões matemáticas numeradas:
-
-\begin{equation}
-  \forall x \in X, \quad \exists \: y \leq \epsilon
-\end{equation}
-
-Escreva expressões matemáticas entre \$ e \$, como em $ \lim_{x \to \infty}
-\exp(-x) = 0 $, para que fiquem na mesma linha.
-
-Também é possível usar colchetes para indicar o início de uma expressão
-matemática que não é numerada.
-
-\[
-\left|\sum_{i=1}^n a_ib_i\right|
-\le
-\left(\sum_{i=1}^n a_i^2\right)^{1/2}
-\left(\sum_{i=1}^n b_i^2\right)^{1/2}
-\]
-
-Consulte mais informações sobre expressões matemáticas em
-\url{https://github.com/abntex/abntex2/wiki/Referencias}.
-
-% ---
-\section{Enumerações: alíneas e subalíneas}
-% ---
-
-\index{alíneas}\index{subalíneas}\index{incisos}Quando for necessário enumerar
-os diversos assuntos de uma seção que não possua título, esta deve ser
-subdividida em alíneas \cite[4.2]{NBR6024:2012}:
-
-\begin{alineas}
-
-  \item os diversos assuntos que não possuam título próprio, dentro de uma mesma
-  seção, devem ser subdivididos em alíneas; 
-  
-  \item o texto que antecede as alíneas termina em dois pontos;
-  \item as alíneas devem ser indicadas alfabeticamente, em letra minúscula,
-  seguida de parêntese. Utilizam-se letras dobradas, quando esgotadas as
-  letras do alfabeto;
-
-  \item as letras indicativas das alíneas devem apresentar recuo em relação à
-  margem esquerda;
-
-  \item o texto da alínea deve começar por letra minúscula e terminar em
-  ponto-e-vírgula, exceto a última alínea que termina em ponto final;
-
-  \item o texto da alínea deve terminar em dois pontos, se houver subalínea;
-
-  \item a segunda e as seguintes linhas do texto da alínea começa sob a
-  primeira letra do texto da própria alínea;
-  
-  \item subalíneas \cite[4.3]{NBR6024:2012} devem ser conforme as alíneas a
-  seguir:
-
-  \begin{alineas}
-     \item as subalíneas devem começar por travessão seguido de espaço;
-
-     \item as subalíneas devem apresentar recuo em relação à alínea;
-
-     \item o texto da subalínea deve começar por letra minúscula e terminar em
-     ponto-e-vírgula. A última subalínea deve terminar em ponto final, se não
-     houver alínea subsequente;
-
-     \item a segunda e as seguintes linhas do texto da subalínea começam sob a
-     primeira letra do texto da própria subalínea.
-  \end{alineas}
-  
-  \item no \abnTeX\ estão disponíveis os ambientes \texttt{incisos} e
-  \texttt{subalineas}, que em suma são o mesmo que se criar outro nível de
-  \texttt{alineas}, como nos exemplos à seguir:
-  
-  \begin{incisos}
-    \item \textit{Um novo inciso em itálico};
-  \end{incisos}
-  
-  \item Alínea em \textbf{negrito}:
-  
-  \begin{subalineas}
-    \item \textit{Uma subalínea em itálico};
-    \item \underline{\textit{Uma subalínea em itálico e sublinhado}}; 
-  \end{subalineas}
-  
-  \item Última alínea com \emph{ênfase}.
-  
-\end{alineas}
-
-% ---
-\section{Espaçamento entre parágrafos e linhas}
-% ---
-
-\index{espaçamento!dos parágrafos}O tamanho do parágrafo, espaço entre a margem
-e o início da frase do parágrafo, é definido por:
-
-\begin{verbatim}
-   \setlength{\parindent}{1.3cm}
-\end{verbatim}
-
-\index{espaçamento!do primeiro parágrafo}Por padrão, não há espaçamento no
-primeiro parágrafo de cada início de divisão do documento
-(\autoref{sec-divisoes}). Porém, você pode definir que o primeiro parágrafo
-também seja indentado, como é o caso deste documento. Para isso, apenas inclua o
-pacote \textsf{indentfirst} no preâmbulo do documento:
-
-\begin{verbatim}
-   \usepackage{indentfirst}      % Indenta o primeiro parágrafo de cada seção.
-\end{verbatim}
-
-\index{espaçamento!entre os parágrafos}O espaçamento entre um parágrafo e outro
-pode ser controlado por meio do comando:
-
-\begin{verbatim}
-  \setlength{\parskip}{0.2cm}  % tente também \onelineskip
-\end{verbatim}
-
-\index{espaçamento!entre as linhas}O controle do espaçamento entre linhas é
-definido por:
-
-\begin{verbatim}
-  \OnehalfSpacing       % espaçamento um e meio (padrão); 
-  \DoubleSpacing        % espaçamento duplo
-  \SingleSpacing        % espaçamento simples	
-\end{verbatim}
-
-Para isso, também estão disponíveis os ambientes:
-
-\begin{verbatim}
-  \begin{SingleSpace} ...\end{SingleSpace}
-  \begin{Spacing}{hfactori} ... \end{Spacing}
-  \begin{OnehalfSpace} ... \end{OnehalfSpace}
-  \begin{OnehalfSpace*} ... \end{OnehalfSpace*}
-  \begin{DoubleSpace} ... \end{DoubleSpace}
-  \begin{DoubleSpace*} ... \end{DoubleSpace*} 
-\end{verbatim}
-
-Para mais informações, consulte \citeonline[p. 47-52 e 135]{memoir}.
-
-% ---
-\section{Inclusão de outros arquivos}\label{sec-include}
-% ---
-
-É uma boa prática dividir o seu documento em diversos arquivos, e não
-apenas escrever tudo em um único. Esse recurso foi utilizado neste
-documento. Para incluir diferentes arquivos em um arquivo principal,
-de modo que cada arquivo incluído fique em uma página diferente, utilize o
-comando:
-
-\begin{verbatim}
-   \include{documento-a-ser-incluido}      % sem a extensão .tex
-\end{verbatim}
-
-Para incluir documentos sem quebra de páginas, utilize:
-
-\begin{verbatim}
-   \input{documento-a-ser-incluido}      % sem a extensão .tex
-\end{verbatim}
-
-% ---
-\section{Compilar o documento \LaTeX}
-% ---
-
-Geralmente os editores \LaTeX, como o
-TeXlipse\footnote{\url{http://texlipse.sourceforge.net/}}, o
-Texmaker\footnote{\url{http://www.xm1math.net/texmaker/}}, entre outros,
-compilam os documentos automaticamente, de modo que você não precisa se
-preocupar com isso.
-
-No entanto, você pode compilar os documentos \LaTeX usando os seguintes
-comandos, que devem ser digitados no \emph{Prompt de Comandos} do Windows ou no
-\emph{Terminal} do Mac ou do Linux:
-
-\begin{verbatim}
-   pdflatex ARQUIVO_PRINCIPAL.tex
-   bibtex ARQUIVO_PRINCIPAL.aux
-   makeindex ARQUIVO_PRINCIPAL.idx 
-   makeindex ARQUIVO_PRINCIPAL.nlo -s nomencl.ist -o ARQUIVO_PRINCIPAL.nls
-   pdflatex ARQUIVO_PRINCIPAL.tex
-   pdflatex ARQUIVO_PRINCIPAL.tex
-\end{verbatim}
-
-% ---
-\section{Remissões internas}
-% ---
-
-Ao nomear a \autoref{tab-nivinv} e a \autoref{fig_circulo}, apresentamos um
-exemplo de remissão interna, que também pode ser feita quando indicamos o
-\autoref{cap_exemplos}, que tem o nome \emph{\nameref{cap_exemplos}}. O número
-do capítulo indicado é \ref{cap_exemplos}, que se inicia à
-\autopageref{cap_exemplos}\footnote{O número da página de uma remissão pode ser
-obtida também assim:
-\pageref{cap_exemplos}.}.
-Veja a \autoref{sec-divisoes} para outros exemplos de remissões internas entre
-seções, subseções e subsubseções.
-
-O código usado para produzir o texto desta seção é:
-
-\begin{verbatim}
-Ao nomear a \autoref{tab-nivinv} e a \autoref{fig_circulo}, apresentamos um
-exemplo de remissão interna, que também pode ser feita quando indicamos o
-\autoref{cap_exemplos}, que tem o nome \emph{\nameref{cap_exemplos}}. O número
-do capítulo indicado é \ref{cap_exemplos}, que se inicia à
-\autopageref{cap_exemplos}\footnote{O número da página de uma remissão pode ser
-obtida também assim:
-\pageref{cap_exemplos}.}.
-Veja a \autoref{sec-divisoes} para outros exemplos de remissões internas entre
-seções, subseções e subsubseções.
-\end{verbatim}
-
-% ---
-\section{Divisões do documento: seção}\label{sec-divisoes}
-% ---
-
-Esta seção testa o uso de divisões de documentos. Esta é a
-\autoref{sec-divisoes}. Veja a \autoref{sec-divisoes-subsection}.
-
-\subsection{Divisões do documento: subseção}\label{sec-divisoes-subsection}
-
-Isto é uma subseção. Veja a \autoref{sec-divisoes-subsubsection}, que é uma
-\texttt{subsubsection} do \LaTeX, mas é impressa chamada de ``subseção'' porque
-no Português não temos a palavra ``subsubseção''.
-
-\subsubsection{Divisões do documento: subsubseção}
-\label{sec-divisoes-subsubsection}
-
-Isto é uma subsubseção.
-
-\subsubsection{Divisões do documento: subsubseção}
-
-Isto é outra subsubseção.
-
-\subsection{Divisões do documento: subseção}\label{sec-exemplo-subsec}
-
-Isto é uma subseção.
-
-\subsubsection{Divisões do documento: subsubseção}
-
-Isto é mais uma subsubseção da \autoref{sec-exemplo-subsec}.
-
-
-\subsubsubsection{Esta é uma subseção de quinto
-nível}\label{sec-exemplo-subsubsubsection}
-
-Esta é uma seção de quinto nível. Ela é produzida com o seguinte comando:
-
-\begin{verbatim}
-\subsubsubsection{Esta é uma subseção de quinto
-nível}\label{sec-exemplo-subsubsubsection}
-\end{verbatim}
-
-\subsubsubsection{Esta é outra subseção de quinto nível}\label{sec-exemplo-subsubsubsection-outro}
-
-Esta é outra seção de quinto nível.
-
-
-\paragraph{Este é um parágrafo numerado}\label{sec-exemplo-paragrafo}
-
-Este é um exemplo de parágrafo nomeado. Ele é produzida com o comando de
-parágrafo:
-
-\begin{verbatim}
-\paragraph{Este é um parágrafo nomeado}\label{sec-exemplo-paragrafo}
-\end{verbatim}
-
-A numeração entre parágrafos numeradaos e subsubsubseções são contínuas.
-
-\paragraph{Esta é outro parágrafo numerado}\label{sec-exemplo-paragrafo-outro}
-
-Esta é outro parágrafo nomeado.
-
-% ---
-\section{Este é um exemplo de nome de seção longo. Ele deve estar
-alinhado à esquerda e a segunda e demais linhas devem iniciar logo abaixo da
-primeira palavra da primeira linha}
-% ---
-
-Isso atende à norma \citeonline[seções de 5.2.2 a 5.2.4]{NBR14724:2011} 
- e \citeonline[seções de 3.1 a 3.8]{NBR6024:2012}.
-
-% ---
-\section{Diferentes idiomas e hifenizações}
-\label{sec-hifenizacao}
-% ---
-
-Para usar hifenizações de diferentes idiomas, inclua nas opções do documento o
-nome dos idiomas que o seu texto contém. Por exemplo (para melhor
-visualização, as opções foram quebras em diferentes linhas):
-
-\begin{verbatim}
-\documentclass[
-	12pt,
-	openright,
-	twoside,
-	a4paper,
-	english,
-	french,
-	spanish,
-	brazil
-	]{abntex2}
-\end{verbatim}
-
-O idioma português-brasileiro (\texttt{brazil}) é incluído automaticamente pela
-classe \textsf{abntex2}. Porém, mesmo assim a opção \texttt{brazil} deve ser
-informada como a última opção da classe para que todos os pacotes reconheçam o
-idioma. Vale ressaltar que a última opção de idioma é a utilizada por padrão no
-documento. Desse modo, caso deseje escrever um texto em inglês que tenha
-citações em português e em francês, você deveria usar o preâmbulo como abaixo:
-
-\begin{verbatim}
-\documentclass[
-	12pt,
-	openright,
-	twoside,
-	a4paper,
-	french,
-	brazil,
-	english
-	]{abntex2}
-\end{verbatim}
-
-A lista completa de idiomas suportados, bem como outras opções de hifenização,
-estão disponíveis em \citeonline[p.~5-6]{babel}.
-
-Exemplo de hifenização em inglês\footnote{Extraído de:
-\url{http://en.wikibooks.org/wiki/LaTeX/Internationalization}}:
-
-\begin{otherlanguage*}{english}
-\textit{Text in English language. This environment switches all language-related
-definitions, like the language specific names for figures, tables etc. to the other
-language. The starred version of this environment typesets the main text
-according to the rules of the other language, but keeps the language specific
-string for ancillary things like figures, in the main language of the document.
-The environment hyphenrules switches only the hyphenation patterns used; it can
-also be used to disallow hyphenation by using the language name
-`nohyphenation'.}
-\end{otherlanguage*}
-
-O idioma geral do texto por ser alterado como no exemplo seguinte:
-
-\begin{verbatim}
-  \selectlanguage{english}
-\end{verbatim}
-
-Isso altera automaticamente a hifenização e todos os nomes constantes de
-referências do documento para o idioma inglês. Consulte o manual da classe
-\cite{abntex2classe} para obter orientações adicionais sobre internacionalização de
-documentos produzidos com \abnTeX.
-
-A \autoref{sec-citacao} descreve o ambiente \texttt{citacao} que pode receber
-como parâmetro um idioma a ser usado na citação.
-
-% ---
-\section{Consulte o manual da classe \textsf{abntex2}}
-% ---
-
-Consulte o manual da classe \textsf{abntex2} \cite{abntex2classe} para uma
-referência completa das macros e ambientes disponíveis. 
-
-Além disso, o manual possui informações adicionais sobre as normas ABNT
-observadas pelo \abnTeX\ e considerações sobre eventuais requisitos específicos
-não atendidos, como o caso da \citeonline[seção 5.2.2]{NBR14724:2011}, que
-especifica o espaçamento entre os capítulos e o início do texto, regra
-propositalmente não atendida pelo presente modelo.
-
-% ---
-\section{Referências bibliográficas}
-% ---
-
-A formatação das referências bibliográficas conforme as regras da ABNT são um
-dos principais objetivos do \abnTeX. Consulte os manuais
-\citeonline{abntex2cite} e \citeonline{abntex2cite-alf} para obter informações
-sobre como utilizar as referências bibliográficas.
-
-%-
-\subsection{Acentuação de referências bibliográficas}
-%-
-
-Normalmente não há problemas em usar caracteres acentuados em arquivos
-bibliográficos (\texttt{*.bib}). Porém, como as regras da ABNT fazem uso quase
-abusivo da conversão para letras maiúsculas, é preciso observar o modo como se
-escreve os nomes dos autores. Na ~\autoref{tabela-acentos} você encontra alguns
-exemplos das conversões mais importantes. Preste atenção especial para `ç' e `í'
-que devem estar envoltos em chaves. A regra geral é sempre usar a acentuação
-neste modo quando houver conversão para letras maiúsculas.
-
-\begin{table}[htbp]
-\caption{Tabela de conversão de acentuação.}
-\label{tabela-acentos}
-
-\begin{center}
-\begin{tabular}{ll}\hline\hline
-acento & \textsf{bibtex}\\
-à á ã & \verb+\`a+ \verb+\'a+ \verb+\~a+\\
-í & \verb+{\'\i}+\\
-ç & \verb+{\c c}+\\
-\hline\hline
+Os produtos Pentaho fazem parte de uma plataforma abrangente usada para acessar, integrar, manipular, visualizar e analisar dados. Incluem componentes baseados na \textit{web} e ferramentas de \textit{design}. É um projeto de código aberto, desenvolvido em Java e mantido pela Hitachi Vantara© com uma comunidade ativa. A plataforma é oferecida em duas diferentes edições: a \textit{Community Edition}\footnote{\textit{Pentaho Community Edition}: \url{https://sourceforge.net/projects/pentaho/}} e a \textit{Enterprise Edition}\footnote{\textit{Pentaho Enterprise Edition}: \url{https://www.hitachivantara.com/en-us/products/data-management-analytics/pentaho/download-pentaho.html}}. A versão \textit{Community Edition} é distribuída gratuitamente com o foco de ser continuamente desenvolvida de forma cooperativa. A versão \textit{Enterprise Edition} conta com recursos mais avançados como, por exemplo, suporte a dados de \textit{streaming}, biblioteca de conectores ampliada, suporte técnico da Hitachi Vantara, além de outras vantagens prevista no pacote comercial. 
+
+Nesta seção, serão apresentadas as ferramentas disponíveis na versão \textit{Pentaho Community Edition}, necessárias para o desenvolvimento de um projeto de BI.
+
+\subsection{\textit{Pentaho Data Integration}}
+\textit{Pentaho Data Integration} (PDI) fornece acesso a um motor de extração, transformação e carregamento (ETL) que captura os dados certos, limpa os dados e armazena os dados usando um formato uniforme que é acessível e relevante para os usuários finais e tecnologias \textit{Internet of Things} (IoT). O cliente PDI é um aplicativo de \textit{desktop} que permite criar transformações e agendar e executar trabalhos \cite{pentahodocumentation}.
+
+Os usos comuns do cliente PDI incluem:
+\begin{itemize}
+    \item Migração de dados entre diferentes bancos de dados e aplicativos;
+    \item Carregar enormes conjuntos de dados em bancos de dados, aproveitando ao máximo os ambientes de processamento em nuvem, em \textit{cluster} e massivamente paralelos;
+    \item Limpeza de dados com etapas que variam de transformações muito simples a muito complexas;
+    \item Integração de dados, incluindo a capacidade de aproveitar ETL em tempo real como uma fonte de dados para o \textit{Pentaho Reporting};
+    \item População do \textit{Data Warehouse} com suporte integrado para alterar lentamente as dimensões e criação de chaves substitutas.
+\end{itemize}
+
+\subsection{\textit{Pentaho Schema Workbench}}
+\textit{Pentaho Schema Workbench} (PSW) é o software usado para criar esquemas que mapeiam o modelo físico de dados multidimensionais com o modelo lógico do cubo de dados, utilizando o motor OLAP escrito em Java, Mondrian, também desenvolvido pela Pentaho. O PSW constrói a interface entre os modelos a partir de arquivos XML, que são executados pelo Mondrian para realizar as consultas escritas em linguagem \textit{Multidimensional Express} (MDX).
+
+O PSW fornece as seguintes funcionalidades:
+
+\begin{itemize}
+    \item Editor de esquema integrado para construção de cubos OLAP;
+    \item Teste de consultas MDX nos esquemas e bases de dados.
+\end{itemize}
+
+\subsection{\textit{Pentaho Aggregation Designer}}
+\textit{Pentaho Aggregation Designer} (PAD) simplifica a criação e implantação de tabelas agregadas que melhoram o desempenho das análises no Pentaho. É uma ferramenta gráfica, desenvolvida em Java, fornece uma interface que permite criar tabelas agregadas de dimensões com níveis, de acordo com a especificação necessária.
+
+\subsection{\textit{Pentaho Business Analytics Platform}}
+O \textit{Pentaho Business Analytics Platform} é um ambiente para interação com os dados e administração de usuários da plataforma, também conhecida como \textit{Pentaho Server}. O nome oficialmente empregado pela Hitachi Vantara foi \textit{Pentaho User Console} (PUC). Ele é um ambiente de design baseado na web onde se pode analisar dados, criar relatórios interativos, relatórios de painel e construir painéis integrados para compartilhar soluções de inteligência de negócios com outras pessoas da organização e na internet. Além de seus recursos de design, o \textit{Pentaho User Console} oferece uma ampla variedade de recursos de administração do sistema para configurar o servidor Pentaho, além de administração de permissões de segurança e acesso de usuários.
+
+\subsection{\textit{Pentaho Report Designer}}
+\textit{Pentaho Report Designer} (PRD) é uma ferramenta sofisticada para geração de relatórios que pode ser usada independentemente da Suite Pentaho ou integrada ao \textit{Pentaho User Console}. Permite se conectar a múltiplas fontes de dados como, por exemplo, SQL, MDX e \textit{Community Data Access}.
+
+\subsection{\textit{Saiku Analytics}}
+\textit{Saiku Business Analytics} é um cliente web OLAP disponível como \textit{plug-in} para o \textit{Pentaho Business Analytics Platform}. Ele utiliza a \textit{engine} Mondrian para explorar as diversas fontes de dados conectadas e proporcionar de forma fácil e amigável o recurso de cubos OLAP com uma experiência simples para usuário final usando tecnologia arrastar e soltar (\textit{Drag and Drop}). 
+
+O \textit{Saiku Analytics} é distribuído pela Meteorite BI© em duas versões, o \textit{Saiku Community Edition}\footnote{\textit{Saiku Community Edition}: \url{https://community.meteorite.bi/}} que é fornecido gratuitamente e a versão \textit{Saiku Enterprise Edition}\footnote{\textit{Saiku Enterprise Edition}: \url{https://www.meteorite.bi/products/saiku/}} que possui suporte comercial.
+
+\section{Terapia Nutricional}
+A terapia nutricional (TN) é a intervenção nutricional realizada em pacientes hospitalizados, seguindo um protocolo de rotinas e critérios, e tem como principais objetivos prevenir e tratar a desnutrição, preparando o paciente para o procedimento cirúrgico e clínico, melhorando a resposta imunológica e cicatrizante, modulando a resposta orgânica ao tratamento clínico e cirúrgico, prevenindo e tratando as complicações infecciosas e não infecciosas, como também melhorar a qualidade de vida do paciente, diminuir o tempo de internação, diminuir a mortalidade e, consequentemente, diminuir os custos hospitalares \cite{manualnutricao2016, mcclave2013}. 
+
+Segundo o \citeonline{manualnutricao2016}, existe também um conjunto de ações para a execução da terapia nutricional no paciente, entre elas estão, realizar triagem nutricional, executar avaliação nutricional, calcular necessidades de nutrientes e executar um acompanhamento nutricional até o desfecho da alta médica. O processo mais coerente e produtivo para início da avaliação do estado nutricional em unidades hospitalares é realizar a triagem nutricional \cite{protocolonutricionaladulto}. Na \autoref{subD-triagem} são melhor detalhadas as características da triagem nutricional e algumas atividades subsequentes relevantes para entendimento dos próximos capítulos, são elas, a avaliação nutricional na \autoref{subD-avaliacao} e os indicadores de qualidade em terapia nutricional na \autoref{subD-indicadores}. 
+
+\subsection{Triagem Nutricional} \label{subD-triagem}
+Triagem nutricional é definida como um processo de identificação das características conhecidas por estarem relacionadas a problemas nutricionais, com o objetivo de identificar indivíduos desnutridos ou em risco, para que sejam instituídas medidas de intervenção nutricional mais precocemente. Um dos instrumentos de triagem utilizados é o \textit{Nutritional Risk Screening} (NRS). Este instrumento foi desenhado para aplicação em ambiente hospitalar e baseia o rastreamento de risco nutricional nos critérios: perda de peso dos últimos três meses, índice de massa corporal (IMC), ingestão alimentar (apetite e capacidade de se alimentar) e fator de estresse. Um fator de risco adicional para ajustar a classificação de risco é a idade acima de 70 anos \cite{protocolonutricionaladulto, manualnutricao2016}. Para crianças o instrumento indicado pela \textit{European Society of Parenteral and Enteral Nutrition} (ESPEN) é o \textit{Screening Tool for Risk on Nutritional Status and Growth}, cujo termo técnico adotado é \textit{STRONG Kids} \cite{protocolonutricionalinfantil}. 
+
+\subsection{Avaliação Nutricional} \label{subD-avaliacao}
+Avaliação nutricional é o exame detalhado das variáveis metabólicas, nutricionais ou funcionais do indivíduo e é realizada quando identificado na triagem algum indicador de risco. É um processo mais longo do que a triagem, onde todas as informações devem ser registradas, datadas e assinadas no prontuário do paciente sendo esta uma atividade de responsabilidade do profissional nutricionista \cite{protocolonutricionaladulto}. 
+
+Assim como para a triagem, existem instrumentos para identificação do estado nutricional de pacientes hospitalizados, segundo \citeonline{baker1982} a Avaliação Subjetiva Global (ASG) e a Avaliação Subjetiva Global Produzida pelo Paciente (ASG-PPP) são exemplos que podem ser aplicados. ASG é um método clínico de avaliação do estado nutricional simples, de baixo custo e não invasivo, aplicado no formato de questionário, que pode ser realizado à beira do leito. Tem fácil execução, boa repetibilidade e é capaz de identificar adequadamente pacientes de maior risco para complicações pós-operatórias ou quando em situações clínicas identifica desnutrição ou risco de desnutrição \cite{baker1982}. Já ASG-PPP é uma forma modificada da ASG, desenvolvida a partir da necessidade de uma aplicação fácil e de baixo custo, porém que pudesse ser utilizada em pacientes oncológicos ambulatoriais \cite{ottery1996}.
+
+\subsection{Indicadores de Qualidade em Terapia Nutricional} \label{subD-indicadores}
+O objetivo dos indicadores de qualidade em terapia nutricional é de conhecer a frequência da triagem nutricional desde o primeiro dia de internação, até 48 horas. A meta é atingir pelo menos 80\% do seu resultado. Esse valor pode ser alcançado de forma progressiva, de acordo com a história do estabelecimento hospitalar. Outros indicadores dever ser usados levando em consideração características e necessidades dos indivíduos, sendo relacionados a atributos de simplicidade, objetividade e custo de aplicação, afim de que as informações fornecidas possam, de fato, resultar em melhorias no serviço \cite{manualnutricao2016}.
+
+No \autoref{quadro_indicadoresQTN} são apresentados os Indicadores de Qualidade em Terapia Nutricional (IQTN), segundo \cite{protocolonutricionaladulto}.
+
+\begin{quadro}[htb]
+\caption{\label{quadro_indicadoresQTN}Indicadores de Qualidade em Terapia Nutricional.}
+\label{}
+\begin{tabular}{|p{1cm}|p{9cm}|p{5cm}|}
+	\hline
+	\textbf{Item} & \textbf{Indicadores} & \textbf{Meta} \\ \hline
+	1 & Frequência de realização de triagem nutricional em indivíduos hospitalizados. \newline Frequência: Bimestral. & \geq 80\% \\ \hline
+	2 & Frequência de prescrição nutricional dietética na alta hospitalar de indivíduos em Terapia Nutricional (TN). \newline Frequência: Mensal. & 100\% \\ \hline
+	3 & Frequência de reavaliação periódica do planejamento nutricional em TN. \newline Frequência: Diária. & \geq 85\% \\ \hline
+	4 & Frequência de medida ou estimativa do gasto energético e necessidades proteicas em indivíduos em TN. \newline Frequência: Mensal. & \geq 80\% \\ \hline
+	5 & Frequência de indivíduos em Terapia Nutricional Enteral (TNE). \newline Frequência: Mensal & > 70\% \\ \hline
+	6 & Frequência de diarreia em indivíduos com TNE. \newline Frequência: Mensal. & \leq 10\% \\ \hline
+    7 & Frequência de saída inadvertida de sonda de nutrição enteral em indivíduos em
+TNE. \newline Frequência: Mensal. & UTIs: \leq 5\% \newline Enfermarias: < 10\%  \\ \hline
+    8 & Frequência de obstrução de sonda de nutrição em indivíduos em TNE. \newline Frequência: Mensal. & UTIs: \leq 5\% \newline Enfermarias: < 10\%  \\ \hline
+    9 & Frequência de jejum digestório por mais de 24 horas em indivíduos com TNE
+ou TNO. \newline Frequência: Mensal. & \leq 10\% \\ \hline
+    10 & Frequência de indivíduos com disfunção da glicemia em TNE e TNP. \newline Frequência: Diária. & Hiperglicemia em indivíduos não críticos < 30\% e indivíduos críticos < 70\% \\ \hline
+    11 & Frequência de infecção de cateter venoso central (CVC) em indivíduos em
+TNP. \newline Frequência: Mensal. & PICC: < que 2,5\%, CVC (sem bacteremia) < 10\% e, CVC (c/ bacteremia) < 5\% \\ \hline
+    12 & Frequência de aplicação de avaliação subjetiva global (ASG) em indivíduos em
+TN. \newline Frequência: Bimestral. & > 75\% \\ \hline
 \end{tabular}
-\end{center}
-\end{table}
+\legend{Fonte: Adaptado de \cite{protocolonutricionaladulto}.}
+%\fonte{Adaptado de \cite{protocolonutricionaladulto}.}
+\end{quadro}
 
+\section{Considerações do capítulo}
+Neste capítulo descreveu-se as características dos sistemas de \textit{Business Intelligence}. Também foram citadas as ferramentas da \textit{Pentaho Platform} e detalhes sobre suas funções. Posteriormente foi definido o conceito de terapia nutricional e apresentados indicadores de qualidade em terapia nutricional.
 
-% ---
-\section{Precisa de ajuda?}
-% ---
-
-Consulte a FAQ com perguntas frequentes e comuns no portal do \abnTeX:
-\url{https://github.com/abntex/abntex2/wiki/FAQ}.
-
-Inscreva-se no grupo de usuários \LaTeX:
-\url{http://groups.google.com/group/latex-br}, tire suas dúvidas e ajude
-outros usuários.
-
-Participe também do grupo de desenvolvedores do \abnTeX:
-\url{http://groups.google.com/group/abntex2} e faça sua contribuição à
-ferramenta.
-
-% ---
-\section{Você pode ajudar?}
-% ---
-
-Sua contribuição é muito importante! Você pode ajudar na divulgação, no
-desenvolvimento e de várias outras formas. Veja como contribuir com o \abnTeX\
-em \url{https://github.com/abntex/abntex2/wiki/Como-Contribuir}.
-
-% ---
-\section{Quer customizar os modelos do \abnTeX\ para sua instituição ou universidade?}
-% ---
-
-Veja como customizar o \abnTeX\ em: \\
-\url{https://github.com/abntex/abntex2/wiki/ComoCustomizar}.
+No próximo capítulo serão detalhados os resultados da revisão sistemática realizada para conhecer características de gerenciamento e análise dos sistemas de apoio à decisão para nutrição hospitalar existentes.
