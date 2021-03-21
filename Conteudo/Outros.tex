@@ -101,7 +101,7 @@ Para o indicador de Desfecho onde podem ocorrer altas, transferências ou óbito
 
 A solução BI desenvolvida utilizou o conjunto de ferramentas \textit{Pentaho Community}, que são mantidas e disponibilizadas gratuitamente pela Hitachi Vantara©. O \textit{Pentaho Community} fornece um pacote de ferramentas completo para soluções BI. Para este trabalho foram utilizadas as seguintes ferramentas: \textit{Pentaho Data Integration, Pentaho Schema Workbench e Pentaho Business Analytics Platform}.
 
-Alguns pré-requisitos são necessários para o bom funcionamento do ambiente. Foram instalados os seguintes \textit{softwares} auxiliares: Java SE \textit{Runtime Environment} 8 \textit{update} 261, PostgreSQL 12.5, PG Admin 4.24 e SQL \textit{Power Arquitect} 1.0.8. Ainda nesta seção são descritas as etapas de modelagem multidimensional do \textit{Data Warehouse} e do \textit{Data Mart}, o processo de ETL, o mapeamento lógico do cubo de dados OLAP, as consultas e os resultados dos \textit{Dashboards}.
+Alguns pré-requisitos são necessários para o bom funcionamento do ambiente. Foram instalados os seguintes \textit{softwares} auxiliares: Java SE \textit{Runtime Environment} 8 \textit{update} 261 \footnote{Java SE \textit{Runtime Environment} 8: \url{https://www.oracle.com/br/java/technologies/javase-jre8-downloads.html}}, PostgreSQL 12.5 \footnote{PostgreSQL 12.5: \url{https://www.postgresql.org/download}}, PG Admin v4.24 \footnote{PG Admin: \url{https://www.pgadmin.org/download}} e SQL \textit{Power Arquitect} 1.0.8 \footnote{SQL \textit{Power Arquitect} 1.0.8: \url{http://www.bestofbi.com/page/architect_download_os}}. Ainda nesta seção são descritas as etapas de modelagem multidimensional do \textit{Data Warehouse} e do \textit{Data Mart}, o processo de ETL, o mapeamento lógico do cubo de dados OLAP, as consultas e os resultados dos \textit{Dashboards}.
 
 \subsection{Modelagem Multidimensional}
 Ao analisar as características das informações solicitadas pela gestão da unidade de nutrição, considerando cada necessidade como um problema a ser resolvido, foi elaborado o modelo multidimensional usando a estrutura \textit{star schema}. O esquema foi modelado com 13 dimensões (Hospital, Enfermaria, Tempo, Paciente, Classificação Nutricional, Estado Nutricional, Complicações, Triagem Realizada, Suplementação, Dieta Enteral, Insumos, Edema e Desfecho) e uma Fato (Nutrição). A \autoref{fig_modelagemdatawarehouse} mostra o modelo de dados do \textit{Data Warehouse} projetado neste trabalho.
@@ -109,44 +109,43 @@ Ao analisar as características das informações solicitadas pela gestão da un
 \begin{figure}[htb]
 	\caption{\label{fig_modelagemdatawarehouse}Modelo Multidimensional do \textit{Data Warehouse.}}
 	\begin{center}
-	    \includegraphics[scale=0.53]{Imagens/figura - modelagem multidimensional datawarehouse.png}
+	    \includegraphics[scale=0.5798]{Imagens/figura - modelagem multidimensional datawarehouse.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
-\newpage
 Com o objetivo de permitir melhor performance para as consultas também foi projetado um cubo OLAP de modelo relacional, mais especificamente chamado de \textit{Relational Online Analitycal Processing} (ROLAP), como é mostrado na \autoref{fig_modelagemdatamart}.
 
 \begin{figure}[htb]
 	\caption{\label{fig_modelagemdatamart}Modelo Relacional do \textit{Data Mart}.}
 	\begin{center}
-	    \includegraphics[scale=0.59]{Imagens/figura - modelagem multidimensional datamart.png}
+	    \includegraphics[scale=0.5798]{Imagens/figura - modelagem multidimensional datamart.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
-O projeto multidimensional e o projeto do cubo ROLAP foram construídos com a ferramenta SQL \textit{Power Architect}, que além da concepção, auxilia na geração e execução do \textit{script} de criação tanto do \textit{Data Warehouse}, quanto do \textit{Data Mart}, implementados na sintaxe do PostgreSQL. Além de ser um SGBD robusto e gratuito, o PostgreSQL também é o sistema de gerenciamento de banco de dados utilizado pelo HU. 
+O projeto multidimensional e o projeto do cubo ROLAP foram construídos com a ferramenta SQL \textit{Power Architect}, que além da concepção, auxilia na geração e execução do \textit{script} de criação tanto do \textit{Data Warehouse}, quanto do \textit{Data Mart}, implementados na sintaxe do PostgreSQL. Além de ser um SGBD gratuito, o PostgreSQL também é o sistema de gerenciamento de banco de dados utilizado pelo HU. 
 
 \subsection{Processo de Extração, Transformação e Carga}
 Com o modelo dimensional construído, foi dada sequência à próxima etapa do projeto, o desenvolvimento do processo de extração, transformação e carga. Para a fase de ETL foi utilizado o \textit{Pentaho Data Integration} (PDI), ferramenta da Pentaho utilizada para sistematizar o processo de tratamento e limpeza dos dados oriundos das fontes de dados e inserção nos armazéns de dados e nos \textit{Data Marts}.
 
-A partir dos arquivos disponibilizados pela Unidade de Nutrição, em formato de planilha eletrônica do \textit{Microsoft Office}, foram corrigidos, padronizados e tratados todos os desvios e inconsistências encontradas. Sequencialmente foi iniciada a carga dos dados no DW, concluindo a persistência dos dados consolidados. Foram desenvolvidos um \textit{script} ETL para cada dimensão e um \textit{script} para a tabela de fato, resultando em 14 \textit{scripts} ETL. Na \autoref{fig_etldimensaohospital} está o processo de transformação utilizado para a carga das informações do hospital. 
+A partir dos arquivos disponibilizados pela Unidade de Nutrição, No formato .xlsx de planilha eletrônica do \textit{Microsoft Office}, foram corrigidos, padronizados e tratados todos os desvios e inconsistências encontradas. Sequencialmente foi iniciada a carga dos dados no DW, concluindo a persistência dos dados consolidados. Foram desenvolvidos um \textit{script} ETL para cada dimensão e um \textit{script} para a tabela de fato, resultando em 14 \textit{scripts} ETL. Na \autoref{fig_etldimensaohospital} está o processo de transformação utilizado para a carga das informações do hospital. 
 
 \begin{figure}[htb]
 	\caption{\label{fig_etldimensaohospital}Processo ETL para a Dimensão Hospital.}
 	\begin{center}
-	    \includegraphics[scale=0.8]{Imagens/figura - etl dw hospital.png}
+	    \includegraphics[scale=0.7]{Imagens/figura - etl dw hospital.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 Na \autoref{fig_etldimensaoenfermaria} os dados relacionados as enfermarias do Hospital Universitário foram obtidos do banco de dados do Aplicativo de Gestão para Hospitais Universitários (AGHU). 
 \begin{figure}[htb]
 	\caption{\label{fig_etldimensaoenfermaria}Processo ETL para a Dimensão Enfermaria.}
 	\begin{center}
-	    \includegraphics[scale=0.7]{Imagens/figura - etl dw enfermaria.png}
+	    \includegraphics[scale=0.8]{Imagens/figura - etl dw enfermaria.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 Na \autoref{fig_etldimensaotriagem} está o processo de transformação utilizado para a carga das informações de triagens nutricionais.
@@ -156,7 +155,7 @@ Na \autoref{fig_etldimensaotriagem} está o processo de transformação utilizad
 	\begin{center}
 	    \includegraphics[scale=0.7]{Imagens/figura - etl dw triagem.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 Na \autoref{fig_etldimensaotempo} está o processo de transformação utilizado para a carga das informações da Dimensão Tempo.
@@ -166,10 +165,9 @@ Na \autoref{fig_etldimensaotempo} está o processo de transformação utilizado 
 	\begin{center}
 	    \includegraphics[scale=0.6]{Imagens/figura - etl dw tempo.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
-\newpage
 Na \autoref{fig_etldimensaopaciente} está o processo de transformação utilizado para a carga das informações da Dimensão Paciente.
 
 \begin{figure}[htb]
@@ -177,20 +175,20 @@ Na \autoref{fig_etldimensaopaciente} está o processo de transformação utiliza
 	\begin{center}
 	    \includegraphics[scale=0.6]{Imagens/figura - etl dw paciente.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
+\newpage
 Na \autoref{fig_etldimensaosuplementacao} está o processo de transformação utilizado para a carga das informações de suplementação.
 
 \begin{figure}[htb]
 	\caption{\label{fig_etldimensaosuplementacao}Processo ETL para a Dimensão Suplementação.}
 	\begin{center}
-	    \includegraphics[scale=0.8]{Imagens/figura - etl dw suplementacao.png}
+	    \includegraphics[scale=1]{Imagens/figura - etl dw suplementacao.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
-\newpage
 Na \autoref{fig_etldimensaoinsumo} está o processo de transformação utilizado para a carga das informações da Dimensão Insumo.
 
 \begin{figure}[htb]
@@ -198,9 +196,10 @@ Na \autoref{fig_etldimensaoinsumo} está o processo de transformação utilizado
 	\begin{center}
 	    \includegraphics[scale=0.7]{Imagens/figura - etl dw insumos.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
+\newpage
 Na \autoref{fig_etldimensaoestado} está o processo de transformação utilizado para a carga das informações de estado nutricional.
 
 \begin{figure}[htb]
@@ -208,7 +207,7 @@ Na \autoref{fig_etldimensaoestado} está o processo de transformação utilizado
 	\begin{center}
 	    \includegraphics[scale=0.7]{Imagens/figura - etl dw estadonutricional.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 Na \autoref{fig_etldimensaoedema} está o processo de transformação utilizado para a carga das informações da Dimensão Edema.
@@ -217,7 +216,7 @@ Na \autoref{fig_etldimensaoedema} está o processo de transformação utilizado 
 	\begin{center}
 	    \includegraphics[scale=0.7]{Imagens/figura - etl dw edema.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 Na \autoref{fig_etldimensaodesfecho} está o processo de transformação utilizado para a carga das informações da Dimensão Desfecho.
@@ -226,7 +225,7 @@ Na \autoref{fig_etldimensaodesfecho} está o processo de transformação utiliza
 	\begin{center}
 	    \includegraphics[scale=0.75]{Imagens/figura - etl dw desfecho.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 Na \autoref{fig_etldimensaoentetal} está o processo de transformação utilizado para a carga das informações de dieta enteral.
@@ -235,7 +234,7 @@ Na \autoref{fig_etldimensaoentetal} está o processo de transformação utilizad
 	\begin{center}
 	    \includegraphics[scale=0.75]{Imagens/figura - etl dw dietaenteral.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 Na \autoref{fig_etldimensaocomplicacoes} está o processo de transformação utilizado para a carga das informações da Dimensão Complicações.
@@ -244,7 +243,7 @@ Na \autoref{fig_etldimensaocomplicacoes} está o processo de transformação uti
 	\begin{center}
 	    \includegraphics[scale=0.75]{Imagens/figura - etl dw complicacoes.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 Na \autoref{fig_etldimensaoclassificacao} está o processo de transformação utilizado para a carga das informações de classificação nutricional.
@@ -253,7 +252,7 @@ Na \autoref{fig_etldimensaoclassificacao} está o processo de transformação ut
 	\begin{center}
 	    \includegraphics[scale=0.9]{Imagens/figura - etl dw classificacao.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 A \autoref{fig_etltabelafato} mostra o processo de transformação e carga para a Tabela de Fato do \textit{Data Warehouse}. 
@@ -262,7 +261,7 @@ A \autoref{fig_etltabelafato} mostra o processo de transformação e carga para 
 	\begin{center}
 	    \includegraphics[scale=0.75]{Imagens/figura - etl dw fato.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 \newpage
@@ -272,7 +271,7 @@ Na \autoref{fig_etlcargafatodatamart} está representado o processo de transform
 	\begin{center}
 	    \includegraphics[scale=0.57]{Imagens/figura - etl dm fato.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 Já na \autoref{fig_etlcargadimensoesdatamart} está representado o processo para as dimensões do \textit{Datamart}.
@@ -281,7 +280,7 @@ Já na \autoref{fig_etlcargadimensoesdatamart} está representado o processo par
 	\begin{center}
 	    \includegraphics[scale=0.56]{Imagens/figura - etl dm dimensoes.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 \clearpage
 
@@ -293,7 +292,7 @@ Com o processo de carga completo, o próximo passo da sequência é a configura�
 	\begin{center}
 	    \includegraphics[scale=0.65]{Imagens/figura - schema workbench.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 \newpage
@@ -303,7 +302,7 @@ As consultas MDX que são a base dos relatórios e gráficos, podem ser montadas
 	\begin{center}
 	    \includegraphics[scale=0.7]{Imagens/figura - workbenchconsulta.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 \newpage
@@ -314,7 +313,7 @@ Com o ambiente pronto e as consultas necessárias montadas, é possível seguir 
 	\begin{center}
 	    \includegraphics[scale=0.6]{Imagens/figura - pluginsaiku.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 \newpage
@@ -326,7 +325,7 @@ Ele também utiliza o motor Mondrian para as consultas aos cubos ROLAP.
 	\begin{center}
 	    \includegraphics[scale=0.45]{Imagens/figura - saikudashboard.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 Também permite que o usuário final elabore as próprias consultas com vários gráficos disponíveis e função arrastar e soltar (\textit{drag in drop}) tornando a experiência mais intuitiva, dispensando conhecimento prévio em SQL ou MDX. 
@@ -343,7 +342,7 @@ Com o ambiente de relatórios pronto e as consultas carregadas utilizando o \tex
 	\begin{center}
 	    \includegraphics[scale=1]{Imagens/1.1.TotalTriagensRealizadasHospitalAnoTabela.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 A \autoref{dashboard_TotalTriagensRealizadasHospitalMesTabela}, mostra o relatório com a quantidade de triagens nutricionais realizadas por mês durante o ano de 2019. 
@@ -353,7 +352,7 @@ A \autoref{dashboard_TotalTriagensRealizadasHospitalMesTabela}, mostra o relató
 	\begin{center}
 	    \includegraphics[scale=1]{Imagens/1.2.TotalTriagensRealizadasHospitalMesTabela.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 A \autoref{dashboard_TotalTriagensRealizadasEnfermariaAnoBarras}, mostra o gráfico de barras sobre a quantidade de triagens nutricionais realizadas por enfermaria no ano de 2019.
@@ -362,9 +361,9 @@ A \autoref{dashboard_TotalTriagensRealizadasEnfermariaAnoBarras}, mostra o gráf
 \begin{figure}[htb]
 	\caption{\label{dashboard_TotalTriagensRealizadasEnfermariaAnoBarras}Quantidade de Triagens Nutricionais Realizadas por enfermaria.}
 	\begin{center}
-	    \includegraphics[scale=0.4]{Imagens/1.3.TotalTriagensRealizadasEnfermariaAnoBarras.png}
+	    \includegraphics[scale=0.39]{Imagens/1.3.TotalTriagensRealizadasEnfermariaAnoBarras.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 A \autoref{dashboard_TotalTriagensRealizadasEnfermariaMesLinhas}, contém um gráfico de linhas demonstrando a tendência de triagens nutricionais realizadas por enfermaria no ano de 2019.
@@ -374,7 +373,7 @@ A \autoref{dashboard_TotalTriagensRealizadasEnfermariaMesLinhas}, contém um gr�
 	\begin{center}
 	    \includegraphics[scale=0.63]{Imagens/1.4.TotalTriagensRealizadasEnfermariaMesLinhas.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 \newpage
@@ -383,9 +382,9 @@ A \autoref{dashboard_PercentualClassificacaoRiscoHospitalAnoPizza}, mostra o gr�
 \begin{figure}[htb]
 	\caption{\label{dashboard_PercentualClassificacaoRiscoHospitalAnoPizza}Percentual de Pacientes segundo Classificação de Risco.}
 	\begin{center}
-	    \includegraphics[scale=0.6]{Imagens/2.1.PercentualPacientesClassificacaoRiscoHospitalAnoPizza.png}
+	    \includegraphics[scale=0.65]{Imagens/2.1.PercentualPacientesClassificacaoRiscoHospitalAnoPizza.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 \clearpage
@@ -396,7 +395,7 @@ A \autoref{dashboard_PercentualPacientesClassificacaoRiscoHospitalMesPizza}, mos
 	\begin{center}
 	    \includegraphics[scale=0.6]{Imagens/2.2.PercentualPacientesClassificacaoRiscoHospitalMesPizza.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 \clearpage
@@ -407,7 +406,7 @@ A \autoref{dashboard_PercentualPacientesClassificacaoRiscoEnfermariaAnoPizza}, m
 	\begin{center}
 	    \includegraphics[scale=0.6]{Imagens/2.3.PercentualPacientesClassificacaoRiscoEnfermariaAnoPizza.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 \clearpage
@@ -418,7 +417,7 @@ A \autoref{dashboard_PercentualPacientesClassificacaoRiscoEnfermariaMesLinha}, m
 	\begin{center}
 	    \includegraphics[scale=0.9]{Imagens/2.4.PercentualPacientesClassificacaoRiscoEnfermariaMesLinha.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 \newpage
@@ -429,7 +428,7 @@ A \autoref{dashboard_PercentualPacienteEstadoNutricionalHospitalAnoPizza}, mostr
 	\begin{center}
 	    \includegraphics[scale=0.6]{Imagens/3.1.PercentualPacienteEstadoNutricionalHospitalAnoPizza.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 \newpage
@@ -440,7 +439,7 @@ A \autoref{dashboard_PercentualPacienteEstadoNutricionalHospitalMesLinha}, mostr
 	\begin{center}
 	    \includegraphics[scale=0.6]{Imagens/3.2.PercentualPacienteEstadoNutricionalHospitalMesLinha.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 \newpage
@@ -451,7 +450,7 @@ A \autoref{dashboard_PercentualPacienteEstadoNutricionalEnfermariaAnoPizza}, mos
 	\begin{center}
 	    \includegraphics[scale=0.6]{Imagens/3.3.PercentualPacienteEstadoNutricionalEnfermariaAnoPizza.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 \newpage
@@ -462,7 +461,7 @@ A \autoref{dashboard_PercentualPacienteEstadoNutricionalEnfermariaMesPizza}, mos
 	\begin{center}
 	    \includegraphics[scale=0.69]{Imagens/3.4.PercentualPacienteEstadoNutricionalEnfermariaMesPizza.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 \newpage
@@ -473,7 +472,7 @@ A \autoref{dashboard_TotalUsoSuplementoHospitalAnoBarra}, mostra a quantidade de
 	\begin{center}
 	    \includegraphics[scale=1]{Imagens/5.1.TotalUsoSuplementoHospitalAnoBarra.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 A \autoref{dashboard_TotalUsoSuplementoEnfermariaAnoBarra}, mostra a quantidade de pacientes em uso de suplementação por enfermaria durante o ano de 2019.
@@ -505,7 +504,7 @@ A \autoref{dashboard_PercentualPacienteUsoSuplementoEnfermariaAnoPizza}, mostra 
 	\begin{center}
 	    \includegraphics[scale=0.8]{Imagens/4.3.PercentualPacienteUsoSuplementoEnfermariaAnoPizza.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 \newpage
@@ -516,7 +515,7 @@ A \autoref{dashboard_PercentualPacienteUsoSuplementoEnfermariaMesLinha}, mostra 
 	\begin{center}
 	    \includegraphics[scale=0.9]{Imagens/4.4.PercentualPacienteUsoSuplementoEnfermariaMesLinha.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 \newpage
@@ -525,9 +524,9 @@ A \autoref{dashboard_TotalUsoSuplementoMediaDeDiasInternadoHospitalMesBarra}, mo
 \begin{figure}[htb]
 	\caption{\label{dashboard_TotalUsoSuplementoMediaDeDiasInternadoHospitalMesBarra}Comparativo de pacientes que utilizam Suplementação com média de dias internado.}
 	\begin{center}
-	    \includegraphics[scale=0.35]{Imagens/6.1.TotalUsoSuplementoMediaDeDiasInternadoHospitalMesBarra.png}
+	    \includegraphics[scale=0.46]{Imagens/6.1.TotalUsoSuplementoMediaDeDiasInternadoHospitalMesBarra.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 %\newpage
@@ -537,9 +536,9 @@ A \autoref{dashboard_TotalUsoSuplementoMediaDeDiasInternadoEnfermariaMesBarra}, 
 	\caption{\label{dashboard_TotalUsoSuplementoMediaDeDiasInternadoEnfermariaMesBarra}Comparativo de pacientes que utilizam Suplementação com média de dias internado por
 enfermaria.}
 	\begin{center}
-	    \includegraphics[scale=0.35]{Imagens/6.2.TotalUsoSuplementoMediaDeDiasInternadoEnfermariaMesBarra.png}
+	    \includegraphics[scale=0.46]{Imagens/6.2.TotalUsoSuplementoMediaDeDiasInternadoEnfermariaMesBarra.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 \subsection{Resultados}
@@ -553,14 +552,14 @@ O \textit{feedback} relatado até o momento pela Unidade de Nutrição do HU foi
 	\begin{center}
 	    \includegraphics[scale=0.41]{Imagens/figura - diagrama de implantação.png}
 	\end{center}
-	\legend{Fonte: Autor.}
+	\legend{Fonte: Autor (2021).}
 \end{figure}
 
 Um dos pontos de maior dificuldade durante o projeto esteve no tratamento dos dados da planilha eletrônica, decorrente da falta de padronização na inserção de dados. Por se tratar de um documento de preenchimento aberto, existe pouco controle sobre como os dados são digitados, levando a uma grande discrepância entre o formato de preenchimento quando comparadas as diferentes enfermarias. Outro problema encontrado estava na solicitação de visualização de informações sobre dados que ainda não eram coletados, impossibilitando que alguns \textit{dashboads} fossem gerados.
 
 O Hospital Universitário de Aracaju já dispõe de um sistema de informação nutricional em fase de homologação para a Unidade de Nutrição \cite{crisnaldo2020}. Existem expectativas para uso em um futuro próximo, permitindo que os dados possam ser consultados diretamente da base de dados do sistema, possibilitando que os processos de ETL sejam padronizados em agendamentos de \textit{jobs} no \textit{Pentaho Data Integration}. Sendo possível assim, ampliar a quantidade de indicadores mensurados, para que mais informações sejam analisadas, visando reduzir o desperdício de recursos e também o tempo de internação dos pacientes, assim como descritos nos estudos A8 e A17, que apontaram a melhora desses índices com base na tomada de decisão orientada aos dados dos \textit{dashboards}.
 
-\section{Considerações finais do capítulo}
+\section{Considerações do capítulo}
 Neste capítulo foi apresentado o processo de construção do ambiente BI para a unidade de nutrição do HU detalhando aspectos técnicos e escopo do projeto. Foram também descritos o processo de ETL para monitoramento dos indicadores solicitados pela unidade de nutrição do hospital, a modelagem de um cubo lógico e o desenvolvimento de \textit{querys} de consulta que são utilizadas na plataforma Pentaho, bem como, a construção dos \textit{dashboards} para interpretação dos dados coletados pelo departamento. O próximo capítulo apresenta as considerações finais deste trabalho.
 
 
